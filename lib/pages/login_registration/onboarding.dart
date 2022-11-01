@@ -16,9 +16,8 @@ class Onboarding extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              decoration: BoxDecoration(
-                color: blueColor,
-                image: const DecorationImage(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
                   image: AssetImage('assets/images/onboarding/img_bg_1.png'),
                   fit: BoxFit.cover,
                 ),
@@ -34,8 +33,7 @@ class Onboarding extends StatelessWidget {
                     width: 262.w,
                     height: 146.w,
                     child: const Image(
-                      image:
-                          AssetImage('assets/images/onboarding/img_title.png'),
+                      image: AssetImage('assets/images/img_logo.png'),
                     ),
                   ),
                   SizedBox(
@@ -71,7 +69,10 @@ class Onboarding extends StatelessWidget {
                     width: 327.w,
                     height: 48.w,
                     text: 'Create an account',
-                    onTap: () {},
+                    onTap: () {
+                      print('tapped');
+                      Get.toNamed('/marketExplorer');
+                    },
                   ),
                   SizedBox(
                     height: 16.h,
@@ -80,7 +81,10 @@ class Onboarding extends StatelessWidget {
                     width: 327.w,
                     height: 48.w,
                     text: 'I already have an account',
-                    onTap: () {},
+                    onTap: () {
+                      print('tapped');
+                      Get.toNamed('/CarouselWithIndicatorDemo');
+                    },
                   ),
                   SizedBox(
                     height: 24.h,

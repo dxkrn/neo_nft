@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,7 +8,8 @@ Color whiteColor = Color(0xffFFFFFF);
 Color redColor = Color(0xffFA0848);
 Color cyanColor = Color(0xff00FFF6);
 Color blueColor = Color(0xff2065D6);
-
+Color greyColor = Color(0xff7F7F7F);
+Color greenColor = Color(0xff009E3D);
 TextStyle boldTextStyle = GoogleFonts.inter(
   fontWeight: FontWeight.w700,
   color: whiteColor,
@@ -31,3 +33,9 @@ TextStyle regularTextStyle = GoogleFonts.inter(
   color: whiteColor,
   fontSize: 16.sp,
 );
+
+double deviceWidth = Get.width;
+double deviceHeight = Get.height;
+double horizontalSpace = 24.w;
+double verticalSpaceMedium = 16.h;
+double verticalSpaceRegular = 24.h;
