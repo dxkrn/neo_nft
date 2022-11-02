@@ -43,7 +43,7 @@ class Onboarding extends StatelessWidget {
                     width: 327.w,
                     child: Text(
                       'The New World\nis Here',
-                      style: boldTextStyle.copyWith(
+                      style: clashDisplayBoldTextStyle.copyWith(
                         fontSize: 32.sp,
                       ),
                       textAlign: TextAlign.center,

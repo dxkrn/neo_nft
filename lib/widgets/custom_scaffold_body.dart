@@ -21,7 +21,7 @@ class CustomScaffoldBody extends StatelessWidget {
               ),
             ),
           ),
-          SafeArea(child: child),
+          child,
         ],
       ),
     );

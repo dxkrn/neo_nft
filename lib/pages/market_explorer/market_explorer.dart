@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/theme.dart';
+import 'package:neo_nft/widgets/CommonCard.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:neo_nft/widgets/group_title.dart';
 
 final List<Widget> featuredList = [
   FeaturedCard(title: 'NEO CUBE', price: '6000'),
@@ -180,21 +182,25 @@ class _MarketExplorerState extends State<MarketExplorer> {
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                     CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                     CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                     CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                   ],
                 ),
@@ -217,21 +223,25 @@ class _MarketExplorerState extends State<MarketExplorer> {
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                     CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                     CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                     CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                   ],
                 ),
@@ -254,21 +264,25 @@ class _MarketExplorerState extends State<MarketExplorer> {
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                     CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                     CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                     CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
+                      pageName: '/itemDetail',
                     ),
                   ],
                 ),
@@ -456,7 +470,7 @@ class TopSellerCard extends StatelessWidget {
                 width: 120.h,
                 child: Text(
                   title,
-                  style: boldTextStyle.copyWith(
+                  style: clashDisplayBoldTextStyle.copyWith(
                     fontSize: 14.sp,
                   ),
                   maxLines: 1,
@@ -482,113 +496,6 @@ class TopSellerCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class CommonCard extends StatelessWidget {
-  CommonCard({
-    Key? key,
-    required this.title,
-    required this.price,
-    required this.favCount,
-  }) : super(key: key);
-  String title;
-  String price;
-  int favCount;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 155.h,
-          height: 200.h,
-          decoration: BoxDecoration(
-            // color: whiteColor,
-            borderRadius: BorderRadius.circular(8.r),
-            image: const DecorationImage(
-              image: AssetImage(
-                'assets/images/market_explorer/img_popular.png',
-              ),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              BlurryContainer(
-                blur: 3,
-                elevation: 0,
-                color: whiteColor.withOpacity(0.01),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(8.r),
-                  bottomRight: Radius.circular(8.r),
-                ),
-                child: SizedBox(
-                  width: 155.h,
-                  height: 40.h,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SizedBox(
-                        width: 155.h,
-                        child: Text(
-                          title,
-                          style: boldTextStyle.copyWith(
-                            fontSize: 14.sp,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 155.h,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '$price SAR',
-                              style: mediumTextStyle.copyWith(
-                                fontSize: 12.sp,
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 12.h,
-                                  height: 12.h,
-                                  child: const Image(
-                                    image: AssetImage(
-                                      'assets/icons/icon_fav.png',
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 2.h,
-                                ),
-                                Text(
-                                  '$favCount',
-                                  style: mediumTextStyle.copyWith(
-                                    fontSize: 8.sp,
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-          width: 16.w,
-        ),
-      ],
     );
   }
 }
@@ -632,7 +539,7 @@ class DiscoverCard extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     title,
-                    style: boldTextStyle.copyWith(
+                    style: clashDisplayBoldTextStyle.copyWith(
                       fontSize: 12.sp,
                     ),
                   ),
@@ -645,30 +552,6 @@ class DiscoverCard extends StatelessWidget {
           width: 16.w,
         ),
       ],
-    );
-  }
-}
-
-class GroupTitle extends StatelessWidget {
-  GroupTitle({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
-  String title;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: horizontalSpace,
-        right: horizontalSpace,
-        bottom: verticalSpaceMedium,
-      ),
-      child: Text(
-        title,
-        style: boldTextStyle.copyWith(
-          fontSize: 20.sp,
-        ),
-      ),
     );
   }
 }

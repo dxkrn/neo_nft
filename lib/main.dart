@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
 import 'package:neo_nft/pages/login_registration/onboarding.dart';
 import 'package:neo_nft/pages/market_explorer/market_explorer.dart';
 import 'dart:ui' as ui;
@@ -35,6 +36,14 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/marketExplorer',
             page: () => const MarketExplorer(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/itemDetail',
+            page: () => const ItemDetailPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,
