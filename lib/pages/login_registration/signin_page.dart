@@ -62,7 +62,7 @@ class SigninPage extends StatelessWidget {
                         height: 48.w,
                         text: 'Continue with email',
                         onTap: () {
-                          Get.toNamed('/signupWithEmailPage');
+                          Get.toNamed('/signinWithEmailPage');
                         },
                       ),
                       SizedBox(
