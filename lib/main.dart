@@ -10,7 +10,7 @@ import 'package:neo_nft/pages/login_registration/signin_with_email_page.dart';
 import 'package:neo_nft/pages/login_registration/signup_page.dart';
 import 'package:neo_nft/pages/login_registration/signup_with_email_page.dart';
 import 'package:neo_nft/pages/market_explorer/market_explorer.dart';
-import 'dart:ui' as ui;
+import 'package:neo_nft/pages/wallet_settings/empty_state_page.dart';
 
 import 'package:neo_nft/widgets/custom_button.dart';
 
@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: const Color(0xff0D0013),
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/onboarding',
+        initialRoute: '/emptyStatePage',
+        // initialRoute: '/onboarding',
         getPages: [
           //NOTE : Login and Registration
           GetPage(
@@ -83,6 +84,16 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/signinWithEmailPage',
             page: () => const SigninWithEmailPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+
+          //NOTE : Wallet Settings
+          GetPage(
+            name: '/emptyStatePage',
+            page: () => const EmptyStatePage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,
