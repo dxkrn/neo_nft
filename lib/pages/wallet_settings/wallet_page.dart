@@ -10,15 +10,15 @@ import 'package:neo_nft/widgets/custom_button_border_with_icon.dart';
 import 'package:neo_nft/widgets/custom_text_field.dart';
 import 'package:neo_nft/widgets/login_signup_background.dart';
 
-class ConnectWalletPage extends StatelessWidget {
-  const ConnectWalletPage({super.key});
+class WalletPage extends StatelessWidget {
+  const WalletPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      appBar: CustomAppbar('Connect Wallet'),
+      appBar: CustomAppbar('Wallet'),
       body: Center(
         child: Stack(
           children: [
@@ -38,28 +38,11 @@ class ConnectWalletPage extends StatelessWidget {
                       height: verticalSpaceRegular,
                     ),
                     Text(
-                      'To get started connect your self-custodian digital wallet',
+                      'Connected wallet',
                       style: clashDisplayBoldTextStyle.copyWith(
                         fontSize: 24.sp,
                       ),
                       textAlign: TextAlign.left,
-                    ),
-                    SizedBox(
-                      height: 8.h,
-                    ),
-                    SizedBox(
-                      child: Text(
-                        'Make secure transactions and store your digital assets safely.',
-                        style: regularTextStyle.copyWith(
-                            color: whiteColor.withOpacity(0.7)),
-                      ),
-                    ),
-                    SizedBox(
-                      height: verticalSpaceRegular,
-                    ),
-                    Text(
-                      'Supported wallet:',
-                      style: clashDisplayBoldTextStyle,
                     ),
                     SizedBox(
                       height: verticalSpaceMedium,
@@ -88,9 +71,36 @@ class ConnectWalletPage extends StatelessWidget {
                             SizedBox(
                               width: 20.w,
                             ),
-                            Text(
-                              'Hesa  Encrypted Wallet',
-                              style: clashDisplayBoldTextStyle,
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Hesa Wallet',
+                                  style: clashDisplayBoldTextStyle,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '0x1647...0f43b87332',
+                                      style: mediumTextStyle.copyWith(
+                                        color: whiteColor.withOpacity(0.7),
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 10.w,
+                                    ),
+                                    SizedBox(
+                                      width: 16.w,
+                                      height: 16.w,
+                                      child: const Image(
+                                          image: AssetImage(
+                                              'assets/icons/icon_copy.png')),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ],
                         ),
