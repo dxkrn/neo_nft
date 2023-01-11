@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neo_nft/theme.dart';
 
-class CustomButtonBorder extends StatelessWidget {
-  CustomButtonBorder({
+class CustomButtonBorderIcon extends StatelessWidget {
+  CustomButtonBorderIcon({
     Key? key,
     required this.width,
     required this.height,
     required this.text,
+    required this.imgSrc,
     required this.onTap,
   }) : super(key: key);
   double width;
   double height;
   Function()? onTap;
   String text;
+  String imgSrc;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +31,25 @@ class CustomButtonBorder extends StatelessWidget {
                   .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
           painter: RPSCustomButton(),
           child: Center(
-            child: Text(
-              text,
-              style: semiBoldTextStyle,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 24.w,
+                  height: 24.w,
+                  child: Image(
+                    image: AssetImage(imgSrc),
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                SizedBox(
+                  width: 12.w,
+                ),
+                Text(
+                  text,
+                  style: semiBoldTextStyle,
+                ),
+              ],
             ),
           ),
         ),

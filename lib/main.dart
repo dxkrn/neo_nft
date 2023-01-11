@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
 import 'package:neo_nft/pages/login_registration/onboarding.dart';
+import 'package:neo_nft/pages/login_registration/signupPage.dart';
 import 'package:neo_nft/pages/market_explorer/market_explorer.dart';
 import 'dart:ui' as ui;
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/onboarding',
         getPages: [
+          //NOTE : Login and Registration
           GetPage(
             name: '/onboarding',
             page: () => const Onboarding(),
@@ -33,6 +35,16 @@ class MyApp extends StatelessWidget {
               milliseconds: 500,
             ),
           ),
+          GetPage(
+            name: '/signupPage',
+            page: () => const SignupPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+
+          //NOTE : Market Explorer Pages
           GetPage(
             name: '/marketExplorer',
             page: () => const MarketExplorer(),

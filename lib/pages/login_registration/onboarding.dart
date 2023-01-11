@@ -71,7 +71,7 @@ class Onboarding extends StatelessWidget {
                     text: 'Create an account',
                     onTap: () {
                       print('tapped');
-                      Get.toNamed('/marketExplorer');
+                      Get.toNamed('/signupPage');
                     },
                   ),
                   SizedBox(
