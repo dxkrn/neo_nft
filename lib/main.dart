@@ -10,6 +10,7 @@ import 'package:neo_nft/pages/login_registration/signin_with_email_page.dart';
 import 'package:neo_nft/pages/login_registration/signup_page.dart';
 import 'package:neo_nft/pages/login_registration/signup_with_email_page.dart';
 import 'package:neo_nft/pages/market_explorer/market_explorer.dart';
+import 'package:neo_nft/pages/wallet_settings/connect_wallet_page.dart';
 import 'package:neo_nft/pages/wallet_settings/empty_state_page.dart';
 
 import 'package:neo_nft/widgets/custom_button.dart';
@@ -94,6 +95,14 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/emptyStatePage',
             page: () => const EmptyStatePage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/connectWalletPage',
+            page: () => const ConnectWalletPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,
