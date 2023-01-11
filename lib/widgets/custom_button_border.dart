@@ -53,7 +53,6 @@ class RPSCustomButton extends CustomPainter {
     path_0.close();
 
     Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
-    // paint_0_fill.color = Color(0xff9A00DF).withOpacity(1.0);
     canvas.drawPath(path_0, paint_0_fill);
 
     Path path_1 = Path();
@@ -69,12 +68,10 @@ class RPSCustomButton extends CustomPainter {
     Paint paint_1_stroke = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = size.width * 0.006116208;
-    // paint_1_stroke.color = Colors.white.withOpacity(0.2);
     paint_1_stroke.color = cyanColor.withOpacity(1.0);
     canvas.drawPath(path_1, paint_1_stroke);
 
     Paint paint_1_fill = Paint()..style = PaintingStyle.fill;
-    // paint_1_fill.color = Color(0xff9A00DF).withOpacity(1.0);
     canvas.drawPath(path_1, paint_1_fill);
   }
 

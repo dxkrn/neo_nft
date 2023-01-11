@@ -55,7 +55,7 @@ class Onboarding extends StatelessWidget {
                   SizedBox(
                     width: 327.w,
                     child: Text(
-                      'Believe in Bytes and Pixels to be\nyour new Digital Assets.',
+                      'Bytes and Pixels -\na World of New Assets.',
                       style: regularTextStyle.copyWith(
                         color: whiteColor.withOpacity(0.7),
                       ),
@@ -90,7 +90,7 @@ class Onboarding extends StatelessWidget {
                     height: 24.h,
                   ),
                   Text(
-                    ' Powered by\nthe AlMajra Blockchain Network',
+                    ' Powered by\nAlMajra Blockchain Network',
                     style: regularTextStyle.copyWith(
                       color: whiteColor.withOpacity(0.7),
                       fontSize: 12.sp,

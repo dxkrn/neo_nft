@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/theme.dart';
-import 'package:neo_nft/widgets/CommonCard.dart';
+import 'package:neo_nft/widgets/common_card.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:neo_nft/widgets/group_title.dart';
@@ -31,6 +31,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
       body: CustomScaffoldBody(
         child: Center(
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             children: [
               SizedBox(
                 height: verticalSpaceMedium,
@@ -73,14 +74,15 @@ class _MarketExplorerState extends State<MarketExplorer> {
                 items: featuredList,
                 carouselController: _controller,
                 options: CarouselOptions(
-                    autoPlay: true,
-                    // enlargeCenterPage: true,
-                    aspectRatio: 2.0,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        _current = index;
-                      });
-                    }),
+                  autoPlay: true,
+                  // enlargeCenterPage: true,
+                  // aspectRatio: 2.0,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _current = index;
+                    });
+                  },
+                ),
               ),
               SizedBox(
                 height: 8.h,
@@ -154,6 +156,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                 // color: blueColor,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
                   children: [
                     SizedBox(
                       width: horizontalSpace,
@@ -174,6 +177,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                 height: 200.h,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
                   children: [
                     SizedBox(
                       width: horizontalSpace,
@@ -215,6 +219,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                 height: 200.h,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
                   children: [
                     SizedBox(
                       width: horizontalSpace,
@@ -256,6 +261,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                 height: 200.h,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
                   children: [
                     SizedBox(
                       width: horizontalSpace,
@@ -298,6 +304,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                 height: 144.h,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
                   children: [
                     SizedBox(
                       width: horizontalSpace,
@@ -435,6 +442,7 @@ class TopSellerCard extends StatelessWidget {
       margin: EdgeInsets.only(
         right: 16.w,
       ),
+      padding: EdgeInsets.only(left: 10.w),
       width: 188.h,
       height: 64.h,
       decoration: BoxDecoration(
@@ -531,7 +539,7 @@ class DiscoverCard extends StatelessWidget {
                   bottomLeft: Radius.circular(8.r),
                   bottomRight: Radius.circular(8.r),
                 ),
-                color: whiteColor.withOpacity(0.01),
+                color: blackColor.withOpacity(0.11),
                 blur: 3,
                 child: Container(
                   width: 104.h,

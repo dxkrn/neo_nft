@@ -47,7 +47,7 @@ class CommonCard extends StatelessWidget {
                 BlurryContainer(
                   blur: 3,
                   elevation: 0,
-                  color: whiteColor.withOpacity(0.01),
+                  color: blackColor.withOpacity(0.1),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(8.r),
                     bottomRight: Radius.circular(8.r),

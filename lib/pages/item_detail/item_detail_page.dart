@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/theme.dart';
-import 'package:neo_nft/widgets/CommonCard.dart';
+import 'package:neo_nft/widgets/common_card.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 import 'package:neo_nft/widgets/group_title.dart';
 
@@ -27,9 +27,6 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
         children: [
           ListView(
             children: [
-              // SizedBox(
-              //   height: 242.h,
-              // ),
               Stack(
                 children: [
                   Container(
@@ -139,57 +136,59 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 ),
               ),
               SizedBox(
-                height: verticalSpaceMedium,
+                height: expandedAbout ? verticalSpaceMedium : 0,
               ),
               Row(
                 children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                      left: horizontalSpace,
-                    ),
-                    width: 144.w,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          width: 24.w,
-                          height: 24.w,
-                          child: const Image(
-                            image: AssetImage(
-                              'assets/icons/icon_twitter.png',
-                            ),
+                  expandedAbout
+                      ? Container(
+                          margin: EdgeInsets.only(
+                            left: horizontalSpace,
                           ),
-                        ),
-                        SizedBox(
-                          width: 24.w,
-                          height: 24.w,
-                          child: const Image(
-                            image: AssetImage(
-                              'assets/icons/icon_instagram.png',
-                            ),
+                          width: 144.w,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 24.w,
+                                height: 24.w,
+                                child: const Image(
+                                  image: AssetImage(
+                                    'assets/icons/icon_twitter.png',
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 24.w,
+                                height: 24.w,
+                                child: const Image(
+                                  image: AssetImage(
+                                    'assets/icons/icon_instagram.png',
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 24.w,
+                                height: 24.w,
+                                child: const Image(
+                                  image: AssetImage(
+                                    'assets/icons/icon_discord.png',
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 24.w,
+                                height: 24.w,
+                                child: const Image(
+                                  image: AssetImage(
+                                    'assets/icons/icon_telegram.png',
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        SizedBox(
-                          width: 24.w,
-                          height: 24.w,
-                          child: const Image(
-                            image: AssetImage(
-                              'assets/icons/icon_discord.png',
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 24.w,
-                          height: 24.w,
-                          child: const Image(
-                            image: AssetImage(
-                              'assets/icons/icon_telegram.png',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                        )
+                      : Container(),
                 ],
               ),
               SizedBox(
@@ -383,7 +382,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 padding: EdgeInsets.only(left: 24.w),
                 child: GridView.count(
                   crossAxisCount: 2,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   crossAxisSpacing: 0,
                   mainAxisSpacing: verticalSpaceMedium,
