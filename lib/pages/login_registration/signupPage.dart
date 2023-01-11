@@ -19,7 +19,7 @@ class SignupPage extends StatelessWidget {
       body: Center(
         child: Stack(
           children: [
-            LoginSignupBackground(),
+            const LoginSignupBackground(),
             Padding(
               padding: EdgeInsets.only(
                 top: 80.h,
@@ -61,7 +61,9 @@ class SignupPage extends StatelessWidget {
                         width: deviceWidth - 48.w,
                         height: 48.w,
                         text: 'Continue with email',
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed('/signupWithEmailPage');
+                        },
                       ),
                       SizedBox(
                         height: verticalSpaceMedium,

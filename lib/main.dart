@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
 import 'package:neo_nft/pages/login_registration/onboarding.dart';
 import 'package:neo_nft/pages/login_registration/signupPage.dart';
+import 'package:neo_nft/pages/login_registration/signupWithEmailPage.dart';
 import 'package:neo_nft/pages/market_explorer/market_explorer.dart';
 import 'dart:ui' as ui;
 
@@ -38,6 +39,14 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/signupPage',
             page: () => const SignupPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/signupWithEmailPage',
+            page: () => const SignupWithEmailPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,
