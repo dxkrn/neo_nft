@@ -7,15 +7,15 @@ import 'package:neo_nft/widgets/custom_button.dart';
 import 'package:neo_nft/widgets/custom_button_border_with_icon.dart';
 import 'package:neo_nft/widgets/login_signup_background.dart';
 
-class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+class SigninPage extends StatelessWidget {
+  const SigninPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      appBar: CustomAppbar('Sign Up'),
+      appBar: CustomAppbar('Sign In'),
       body: Center(
         child: Stack(
           children: [
@@ -37,7 +37,7 @@ class SignupPage extends StatelessWidget {
                         height: verticalSpaceRegular,
                       ),
                       Text(
-                        'Get started now!',
+                        'Sign in to your\nNEO NFTz Account',
                         style: clashDisplayBoldTextStyle.copyWith(
                           fontSize: 24.sp,
                         ),
@@ -48,7 +48,7 @@ class SignupPage extends StatelessWidget {
                       ),
                       SizedBox(
                         child: Text(
-                          'It’s your time to hoard unique digital assets.',
+                          'Saudi Arabia’s favorite NFT marketplace!',
                           style: regularTextStyle.copyWith(
                               color: whiteColor.withOpacity(0.7)),
                         ),

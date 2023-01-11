@@ -83,7 +83,7 @@ class Onboarding extends StatelessWidget {
                     text: 'I already have an account',
                     onTap: () {
                       print('tapped');
-                      Get.toNamed('/CarouselWithIndicatorDemo');
+                      Get.toNamed('/signinPage');
                     },
                   ),
                   SizedBox(

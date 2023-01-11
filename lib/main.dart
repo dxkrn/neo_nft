@@ -5,6 +5,7 @@ import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
 import 'package:neo_nft/pages/login_registration/faceid_page.dart';
 import 'package:neo_nft/pages/login_registration/fingerid_page.dart';
 import 'package:neo_nft/pages/login_registration/onboarding.dart';
+import 'package:neo_nft/pages/login_registration/signin_page.dart';
 import 'package:neo_nft/pages/login_registration/signup_page.dart';
 import 'package:neo_nft/pages/login_registration/signup_with_email_page.dart';
 import 'package:neo_nft/pages/market_explorer/market_explorer.dart';
@@ -65,6 +66,14 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/fingerIDPage',
             page: () => const FingerIDPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/signinPage',
+            page: () => const SigninPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,
