@@ -5,7 +5,7 @@ import 'package:neo_nft/theme.dart';
 import 'package:neo_nft/widgets/custom_appbar.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
 import 'package:neo_nft/widgets/custom_button_border_with_icon.dart';
-import 'package:neo_nft/widgets/loginSignupBackground.dart';
+import 'package:neo_nft/widgets/login_signup_background.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});

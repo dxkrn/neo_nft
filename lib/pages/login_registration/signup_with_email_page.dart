@@ -7,7 +7,7 @@ import 'package:neo_nft/widgets/custom_appbar.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
 import 'package:neo_nft/widgets/custom_button_border_with_icon.dart';
 import 'package:neo_nft/widgets/custom_text_field.dart';
-import 'package:neo_nft/widgets/loginSignupBackground.dart';
+import 'package:neo_nft/widgets/login_signup_background.dart';
 
 class SignupWithEmailPage extends StatelessWidget {
   const SignupWithEmailPage({super.key});
@@ -131,7 +131,9 @@ class SignupWithEmailPage extends StatelessWidget {
                               width: deviceWidth - 48.w,
                               height: 48.w,
                               text: 'Create account',
-                              onTap: () {},
+                              onTap: () {
+                                Get.toNamed('/faceIDPage');
+                              },
                             ),
                           ],
                         ),

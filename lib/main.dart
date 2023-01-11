@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
+import 'package:neo_nft/pages/login_registration/faceid_page.dart';
+import 'package:neo_nft/pages/login_registration/fingerid_page.dart';
 import 'package:neo_nft/pages/login_registration/onboarding.dart';
-import 'package:neo_nft/pages/login_registration/signupPage.dart';
-import 'package:neo_nft/pages/login_registration/signupWithEmailPage.dart';
+import 'package:neo_nft/pages/login_registration/signup_page.dart';
+import 'package:neo_nft/pages/login_registration/signup_with_email_page.dart';
 import 'package:neo_nft/pages/market_explorer/market_explorer.dart';
 import 'dart:ui' as ui;
 
@@ -47,6 +49,22 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/signupWithEmailPage',
             page: () => const SignupWithEmailPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/faceIDPage',
+            page: () => const FaceIDPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/fingerIDPage',
+            page: () => const FingerIDPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,
