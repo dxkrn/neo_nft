@@ -18,7 +18,42 @@ class WalletPage extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      appBar: CustomAppbar('Wallet'),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: (() {
+                Get.back();
+              }),
+              child: Container(
+                margin: EdgeInsets.all(10.w),
+                width: 40.h,
+                height: 40.h,
+                // color: whiteColor,
+                child: const Image(
+                  image: AssetImage('assets/icons/icon_back.png'),
+                ),
+              ),
+            ),
+            Text(
+              'Wallet',
+              style: clashDisplayBoldTextStyle.copyWith(fontSize: 16.sp),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              width: 45.h,
+              height: 32.h,
+              child: const Image(
+                image: AssetImage('assets/icons/icon_debit.png'),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: Center(
         child: Stack(
           children: [
@@ -91,12 +126,17 @@ class WalletPage extends StatelessWidget {
                                     SizedBox(
                                       width: 10.w,
                                     ),
-                                    SizedBox(
-                                      width: 16.w,
-                                      height: 16.w,
-                                      child: const Image(
-                                          image: AssetImage(
-                                              'assets/icons/icon_copy.png')),
+                                    GestureDetector(
+                                      child: SizedBox(
+                                        width: 16.w,
+                                        height: 16.w,
+                                        child: const Image(
+                                            image: AssetImage(
+                                                'assets/icons/icon_copy.png')),
+                                      ),
+                                      onTap: () {
+                                        print('Icon Copy tapped!');
+                                      },
                                     ),
                                   ],
                                 ),
