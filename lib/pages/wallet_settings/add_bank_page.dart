@@ -6,8 +6,8 @@ import 'package:neo_nft/widgets/common_background.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
 import 'package:neo_nft/widgets/custom_text_field.dart';
 
-class AddCardPage extends StatelessWidget {
-  const AddCardPage({super.key});
+class AddBankPage extends StatelessWidget {
+  const AddBankPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class AddCardPage extends StatelessWidget {
               ),
             ),
             Text(
-              'Card Details',
+              'Banking Details',
               style: clashDisplayBoldTextStyle.copyWith(fontSize: 16.sp),
               textAlign: TextAlign.center,
             ),
@@ -69,41 +69,25 @@ class AddCardPage extends StatelessWidget {
                           height: verticalSpaceRegular,
                         ),
                         CustomTextField(
-                          title: 'Card Number',
-                          hint: 'Enter card number...',
+                          title: 'Bank Name',
+                          hint: 'Enter bank name...',
+                        ),
+                        CustomTextField(
+                          title: 'Account IBAN Number',
+                          hint: 'Enter account IBAN number...',
                           isNumber: true,
                         ),
                         CustomTextField(
-                          title: 'Name on Card',
-                          hint: 'Enter name on card...',
-                        ),
-                        Row(
-                          children: [
-                            CustomTextField(
-                              title: 'Expire Date',
-                              hint: 'MM/YY',
-                              isNumber: true,
-                              width: deviceWidth / 2 - 8.w - 24.w,
-                            ),
-                            SizedBox(
-                              width: 16.w,
-                            ),
-                            CustomTextField(
-                              title: 'Security Code',
-                              hint: 'XXX',
-                              width: deviceWidth / 2 - 8.w - 24.w,
-                            ),
-                          ],
+                          title: 'Account Holder Name',
+                          hint: 'Enter account holder name...',
                         ),
                       ],
                     ),
                     CustomButton(
                       width: deviceWidth,
                       height: 48.w,
-                      text: 'Save Changes',
-                      onTap: () {
-                        Get.toNamed('/addBankPage');
-                      },
+                      text: 'Save Information',
+                      onTap: () {},
                     ),
                   ],
                 ),
