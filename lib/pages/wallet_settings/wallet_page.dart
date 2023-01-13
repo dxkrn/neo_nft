@@ -146,7 +146,7 @@ class WalletPage extends StatelessWidget {
                         ),
                       ),
                       onTap: () {
-                        Get.toNamed('/walletPage');
+                        Get.toNamed('/addCardPage');
                       },
                     ),
                   ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neo_nft/theme.dart';
 
@@ -9,10 +10,15 @@ class CustomTextField extends StatelessWidget {
     required this.hint,
     this.hidePass = false,
     this.withIcon = false,
+    this.isNumber = false,
+    this.width = 0,
+    this.maxLength = 999999,
   }) : super(key: key);
 
   String title, hint;
-  bool hidePass, withIcon;
+  bool hidePass, withIcon, isNumber;
+  double width;
+  int maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +33,7 @@ class CustomTextField extends StatelessWidget {
           height: 8.h,
         ),
         Container(
-          width: deviceWidth,
+          width: width == 0 ? deviceWidth : width,
           height: 48.w,
           padding: EdgeInsets.symmetric(
             horizontal: 16.w,
@@ -46,6 +52,10 @@ class CustomTextField extends StatelessWidget {
             cursorColor: whiteColor,
             style: regularTextStyle,
             obscureText: hidePass,
+            keyboardType: isNumber ? TextInputType.number : TextInputType.text,
+            // maxLength: 9999,
+            // maxLengthEnforcement: MaxLengthEnforcement.enforced,
+            maxLines: 1,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintStyle: regularTextStyle.copyWith(
