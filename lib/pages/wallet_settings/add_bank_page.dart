@@ -87,7 +87,9 @@ class AddBankPage extends StatelessWidget {
                       width: deviceWidth,
                       height: 48.w,
                       text: 'Save Information',
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed('/otpVerificationPage');
+                      },
                     ),
                   ],
                 ),

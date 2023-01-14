@@ -11,6 +11,7 @@ Color cyanColor = Color(0xff00FFF6);
 Color blueColor = Color(0xff2065D6);
 Color greyColor = Color(0xff7F7F7F);
 Color greenColor = Color(0xff009E3D);
+Color blurryBGColor = Color(0xff0D0013).withOpacity(0.9);
 
 TextStyle clashDisplayBoldTextStyle = TextStyle(
   fontFamily: 'ClashDisplay',

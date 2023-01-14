@@ -14,6 +14,7 @@ import 'package:neo_nft/pages/wallet_settings/add_bank_page.dart';
 import 'package:neo_nft/pages/wallet_settings/add_card_page.dart';
 import 'package:neo_nft/pages/wallet_settings/connect_wallet_page.dart';
 import 'package:neo_nft/pages/wallet_settings/empty_state_page.dart';
+import 'package:neo_nft/pages/wallet_settings/otp_verification_page.dart';
 import 'package:neo_nft/pages/wallet_settings/wallet_page.dart';
 
 import 'package:neo_nft/widgets/custom_button.dart';
@@ -130,6 +131,14 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/addBankPage',
             page: () => const AddBankPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/otpVerificationPage',
+            page: () => const OTPVerificationPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,
