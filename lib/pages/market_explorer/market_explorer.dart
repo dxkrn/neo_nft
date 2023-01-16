@@ -49,18 +49,18 @@ class _MarketExplorerState extends State<MarketExplorer> {
                         image: AssetImage('assets/images/img_logo_small.png'),
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        print('Notif: tapped');
-                      },
-                      icon: SizedBox(
-                        width: 24.h,
-                        height: 24.h,
-                        child: const Image(
-                          image: AssetImage('assets/icons/icon_bell.png'),
-                        ),
-                      ),
-                    ),
+                    // IconButton(
+                    //   onPressed: () {
+                    //     print('Notif: tapped');
+                    //   },
+                    //   icon: SizedBox(
+                    //     width: 24.h,
+                    //     height: 24.h,
+                    //     child: const Image(
+                    //       image: AssetImage('assets/icons/icon_bell.png'),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -70,14 +70,33 @@ class _MarketExplorerState extends State<MarketExplorer> {
               GroupTitle(title: 'Featured'),
 
               //NOTE : Featured
-              CarouselSlider(
-                items: featuredList,
-                carouselController: _controller,
-                options: CarouselOptions(
-                  autoPlay: true,
-                  // enlargeCenterPage: true,
-                  // aspectRatio: 2.0,
-                  onPageChanged: (index, reason) {
+              // CarouselSlider(
+              //   items: featuredList,
+              //   carouselController: _controller,
+              //   options: CarouselOptions(
+              //     autoPlay: true,
+              //     // enlargeCenterPage: true,
+              //     // aspectRatio: 2.0,
+              //     onPageChanged: (index, reason) {
+              //       setState(() {
+              //         _current = index;
+              //       });
+              //     },
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 8.h,
+              // ),
+
+              //NOTE: Carousel V2
+              SizedBox(
+                // color: cyanColor,
+                width: double.infinity,
+                height: 174.w,
+                child: PageView(
+                  physics: const BouncingScrollPhysics(),
+                  children: featuredList,
+                  onPageChanged: (index) {
                     setState(() {
                       _current = index;
                     });
@@ -87,6 +106,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
               SizedBox(
                 height: 8.h,
               ),
+
               //NOTE : FEatured Indicator
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -96,8 +116,8 @@ class _MarketExplorerState extends State<MarketExplorer> {
                     child: Container(
                       width: 12.0,
                       height: 12.0,
-                      margin:
-                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 4.0),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: _current == entry.key ? cyanColor : whiteColor,
@@ -116,36 +136,51 @@ class _MarketExplorerState extends State<MarketExplorer> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GroupTitle(title: 'Discover'),
-                  GestureDetector(
-                    onTap: () {
-                      print('Search: tapped');
-                    },
-                    child: Container(
-                      width: 67.w,
-                      height: 18.w,
-                      margin: EdgeInsets.only(
-                        right: horizontalSpace,
-                        bottom: verticalSpaceMedium,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: 12.w,
-                            height: 12.w,
+                  Container(
+                    height: 18.w,
+                    margin: EdgeInsets.only(
+                      right: horizontalSpace,
+                      bottom: verticalSpaceMedium,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          child: SizedBox(
+                            width: 16.w,
+                            height: 16.w,
                             child: const Image(
                               image: AssetImage('assets/icons/icon_search.png'),
                             ),
                           ),
-                          Text(
-                            'Search',
-                            style: regularTextStyle.copyWith(
-                              color: whiteColor.withOpacity(0.5),
-                              fontSize: 12.sp,
+                          onTap: () {
+                            print('Search Icon Tapped!');
+                          },
+                        ),
+                        SizedBox(
+                          width: 16.w,
+                        ),
+                        GestureDetector(
+                          child: SizedBox(
+                            width: 16.w,
+                            height: 16.w,
+                            child: const Image(
+                              image:
+                                  AssetImage('assets/icons/icon_setting.png'),
                             ),
                           ),
-                        ],
-                      ),
+                          onTap: () {
+                            print('Setting Icon Tapped!');
+                          },
+                        ),
+                        // Text(
+                        //   'Search',
+                        //   style: regularTextStyle.copyWith(
+                        //     color: whiteColor.withOpacity(0.5),
+                        //     fontSize: 12.sp,
+                        //   ),
+                        // ),
+                      ],
                     ),
                   ),
                 ],
@@ -172,7 +207,36 @@ class _MarketExplorerState extends State<MarketExplorer> {
               ),
 
               //NOTE : Popular
-              GroupTitle(title: 'Popular'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GroupTitle(title: 'Popular'),
+                  Container(
+                    height: 18.w,
+                    margin: EdgeInsets.only(
+                      right: horizontalSpace,
+                      bottom: verticalSpaceMedium,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          child: Text(
+                            'View more',
+                            style: regularTextStyle.copyWith(
+                              color: whiteColor.withOpacity(0.5),
+                              fontSize: 12.sp,
+                            ),
+                          ),
+                          onTap: () {
+                            print('View more Tapped!');
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
               SizedBox(
                 height: 200.h,
                 child: ListView(
@@ -205,6 +269,51 @@ class _MarketExplorerState extends State<MarketExplorer> {
                       price: '6000',
                       favCount: 12,
                       pageName: '/itemDetail',
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: verticalSpaceRegular,
+              ),
+
+              //NOTE : Top Seller
+              GroupTitle(title: 'Top Seller'),
+              SizedBox(
+                width: deviceWidth,
+                height: 144.h,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  children: [
+                    SizedBox(
+                      width: horizontalSpace,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TopSellerCard(
+                          title: 'AZUKI',
+                          percent: 556.49,
+                        ),
+                        TopSellerCard(
+                          title: 'Nyolings',
+                          percent: 428.13,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TopSellerCard(
+                          title: 'Meta-morphic',
+                          percent: 556.49,
+                        ),
+                        TopSellerCard(
+                          title: 'Lumen',
+                          percent: 428.13,
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -293,51 +402,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: verticalSpaceRegular,
-              ),
 
-              //NOTE : Top Seller
-              GroupTitle(title: 'Top Seller'),
-              Container(
-                width: deviceWidth,
-                height: 144.h,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    SizedBox(
-                      width: horizontalSpace,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TopSellerCard(
-                          title: 'AZUKI',
-                          percent: 556.49,
-                        ),
-                        TopSellerCard(
-                          title: 'Nyolings',
-                          percent: 428.13,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TopSellerCard(
-                          title: 'Meta-morphic',
-                          percent: 556.49,
-                        ),
-                        TopSellerCard(
-                          title: 'Lumen',
-                          percent: 428.13,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
               SizedBox(
                 height: 50.h,
               ),
@@ -365,8 +430,9 @@ class FeaturedCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: Container(
-          width: deviceWidth - 48.w,
-          height: (deviceWidth) / 2,
+          width: double.infinity,
+          // width: deviceWidth - 48.w,
+          height: 174.w,
           decoration: BoxDecoration(
             color: blueColor,
             borderRadius: BorderRadius.circular(16.r),
@@ -381,7 +447,26 @@ class FeaturedCard extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             children: [
               Container(
-                width: deviceWidth - 48.w,
+                width: double.infinity,
+                height: 56.w,
+                decoration: BoxDecoration(
+                  // color: cyanColor,
+                  gradient: LinearGradient(
+                    colors: [
+                      blackColor.withOpacity(0),
+                      blackColor.withOpacity(0.99),
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(16.r),
+                    bottomRight: Radius.circular(16.r),
+                  ),
+                ),
+              ),
+              Container(
+                width: double.infinity,
                 height: 70.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -403,20 +488,20 @@ class FeaturedCard extends StatelessWidget {
                           fontSize: 20.sp,
                         ),
                       ),
-                      Row(
-                        children: [
-                          Text(
-                            'Floor:',
-                            style: regularTextStyle.copyWith(
-                              color: whiteColor.withOpacity(0.7),
-                            ),
-                          ),
-                          Text(
-                            ' $price SAR',
-                            style: mediumTextStyle,
-                          ),
-                        ],
-                      )
+                      // Row(
+                      //   children: [
+                      //     Text(
+                      //       'Floor:',
+                      //       style: regularTextStyle.copyWith(
+                      //         color: whiteColor.withOpacity(0.7),
+                      //       ),
+                      //     ),
+                      //     Text(
+                      //       ' $price SAR',
+                      //       style: mediumTextStyle,
+                      //     ),
+                      //   ],
+                      // )
                     ],
                   ),
                 ),
@@ -474,16 +559,29 @@ class TopSellerCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 120.h,
-                child: Text(
-                  title,
-                  style: clashDisplayBoldTextStyle.copyWith(
-                    fontSize: 14.sp,
+              Row(
+                children: [
+                  Text(
+                    title,
+                    style: clashDisplayBoldTextStyle.copyWith(
+                      fontSize: 14.sp,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.clip,
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.clip,
-                ),
+                  SizedBox(
+                    width: 4.w,
+                  ),
+                  SizedBox(
+                    width: 16.w,
+                    height: 16.w,
+                    child: const Image(
+                      image: AssetImage(
+                        'assets/icons/icon_verified.png',
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 4.h,
@@ -539,7 +637,7 @@ class DiscoverCard extends StatelessWidget {
                   bottomLeft: Radius.circular(8.r),
                   bottomRight: Radius.circular(8.r),
                 ),
-                color: blackColor.withOpacity(0.11),
+                color: blackColor.withOpacity(0.3),
                 blur: 3,
                 child: Container(
                   width: 104.h,

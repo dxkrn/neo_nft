@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: const Color(0xff0D0013),
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/emptyStatePage',
+        initialRoute: '/marketExplorer',
         // initialRoute: '/onboarding',
         getPages: [
           //NOTE : Login and Registration
