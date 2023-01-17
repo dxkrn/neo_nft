@@ -131,11 +131,11 @@ class _MarketExplorerState extends State<MarketExplorer> {
                 height: verticalSpaceRegular,
               ),
 
-              //NOTE : Discover
+              //NOTE : Discovery
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GroupTitle(title: 'Discover'),
+                  GroupTitle(title: 'Discovery'),
                   Container(
                     height: 18.w,
                     margin: EdgeInsets.only(
@@ -196,9 +196,18 @@ class _MarketExplorerState extends State<MarketExplorer> {
                     SizedBox(
                       width: horizontalSpace,
                     ),
-                    DiscoverCard(title: 'Art'),
-                    DiscoverCard(title: 'Collectibles'),
-                    DiscoverCard(title: 'Bids'),
+                    DiscoverCard(
+                      title: 'Art',
+                      pageUrl: 'collectionArtPage',
+                    ),
+                    DiscoverCard(
+                      title: 'Collectibles',
+                      pageUrl: 'collectionCollectiblesPage',
+                    ),
+                    DiscoverCard(
+                      title: 'Bids',
+                      pageUrl: 'collectionBidsPage',
+                    ),
                   ],
                 ),
               ),
@@ -610,48 +619,54 @@ class DiscoverCard extends StatelessWidget {
   DiscoverCard({
     Key? key,
     required this.title,
+    required this.pageUrl,
   }) : super(key: key);
-  String title;
+  String title, pageUrl;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          width: 104.h,
-          height: 104.h,
-          decoration: BoxDecoration(
-            border: Border.all(width: 0),
-            borderRadius: BorderRadius.circular(8.r),
-            color: whiteColor,
-            image: const DecorationImage(
-              image:
-                  AssetImage('assets/images/market_explorer/img_discover.png'),
-              fit: BoxFit.cover,
+        GestureDetector(
+          onTap: () {
+            Get.toNamed(pageUrl);
+          },
+          child: Container(
+            width: 104.h,
+            height: 104.h,
+            decoration: BoxDecoration(
+              border: Border.all(width: 0),
+              borderRadius: BorderRadius.circular(8.r),
+              color: whiteColor,
+              image: const DecorationImage(
+                image: AssetImage(
+                    'assets/images/market_explorer/img_discover.png'),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              BlurryContainer(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(8.r),
-                  bottomRight: Radius.circular(8.r),
-                ),
-                color: blackColor.withOpacity(0.3),
-                blur: 3,
-                child: Container(
-                  width: 104.h,
-                  height: 15.h,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    title,
-                    style: clashDisplayBoldTextStyle.copyWith(
-                      fontSize: 12.sp,
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                BlurryContainer(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(8.r),
+                    bottomRight: Radius.circular(8.r),
+                  ),
+                  color: blackColor.withOpacity(0.3),
+                  blur: 3,
+                  child: Container(
+                    width: 104.h,
+                    height: 15.h,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      title,
+                      style: clashDisplayBoldTextStyle.copyWith(
+                        fontSize: 12.sp,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         SizedBox(
