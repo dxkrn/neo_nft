@@ -10,6 +10,7 @@ import 'package:neo_nft/pages/login_registration/signin_with_email_page.dart';
 import 'package:neo_nft/pages/login_registration/signup_page.dart';
 import 'package:neo_nft/pages/login_registration/signup_with_email_page.dart';
 import 'package:neo_nft/pages/market_explorer/CollectionArtPage.dart';
+import 'package:neo_nft/pages/market_explorer/CollectionBidsPage.dart';
 import 'package:neo_nft/pages/market_explorer/market_explorer.dart';
 import 'package:neo_nft/pages/wallet_settings/add_bank_page.dart';
 import 'package:neo_nft/pages/wallet_settings/add_card_page.dart';
@@ -158,6 +159,14 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/collectionArtPage',
             page: () => const CollectionArtPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/collectionBidsPage',
+            page: () => const CollectionBidsPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,

@@ -198,15 +198,15 @@ class _MarketExplorerState extends State<MarketExplorer> {
                     ),
                     DiscoverCard(
                       title: 'Art',
-                      pageUrl: 'collectionArtPage',
+                      pageUrl: '/collectionArtPage',
                     ),
                     DiscoverCard(
                       title: 'Collectibles',
-                      pageUrl: 'collectionCollectiblesPage',
+                      pageUrl: '/collectionCollectiblesPage',
                     ),
                     DiscoverCard(
                       title: 'Bids',
-                      pageUrl: 'collectionBidsPage',
+                      pageUrl: '/collectionBidsPage',
                     ),
                   ],
                 ),
