@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:neo_nft/controllers/item_details_controller.dart';
 import 'package:neo_nft/theme.dart';
 import 'package:neo_nft/widgets/common_card.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 import 'package:neo_nft/widgets/group_title.dart';
-
-bool expandedAbout = true;
-bool expandedDetails = false;
 
 class ItemDetailPage extends StatefulWidget {
   const ItemDetailPage({super.key});
@@ -17,6 +15,16 @@ class ItemDetailPage extends StatefulWidget {
 }
 
 class _ItemDetailPageState extends State<ItemDetailPage> {
+  //NOTE: Controllers
+  final AboutController aboutController = Get.put(AboutController());
+  final AboutCollectionController aboutCollectionController =
+      Get.put(AboutCollectionController());
+  final DetailsController detailsController = Get.put(DetailsController());
+  final AssetPropertiesController assetPropertiesController =
+      Get.put(AssetPropertiesController());
+  final SalesActivityController salesActivityController =
+      Get.put(SalesActivityController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +34,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
           child: Stack(
         children: [
           ListView(
+            physics: const BouncingScrollPhysics(),
             children: [
               Stack(
                 children: [
@@ -124,23 +133,27 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 height: verticalSpaceRegular,
               ),
               GroupTitle(title: 'About'),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et tempor adipiscing egestas molestie sed montes, lorem. Lorem a, eget est orci enim lacinia neque orci, duis.',
-                  style: regularTextStyle.copyWith(
-                    color: whiteColor.withOpacity(0.7),
+              Obx(
+                () => Container(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  child: Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et tempor adipiscing egestas molestie sed montes, lorem. Lorem a, eget est orci enim lacinia neque orci, duis.',
+                    style: regularTextStyle.copyWith(
+                      color: whiteColor.withOpacity(0.7),
+                    ),
+                    maxLines: aboutController.expandedAbout.value ? 99 : 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: expandedAbout ? 99 : 2,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               SizedBox(
-                height: expandedAbout ? verticalSpaceMedium : 0,
+                height: aboutController.expandedAbout.value
+                    ? verticalSpaceMedium
+                    : 0,
               ),
               Row(
                 children: [
-                  expandedAbout
+                  aboutController.expandedAbout.value
                       ? Container(
                           margin: EdgeInsets.only(
                             left: horizontalSpace,
@@ -199,11 +212,14 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      expandedAbout = !expandedAbout;
+                      aboutController.expandedAbout.value =
+                          !aboutController.expandedAbout.value;
                     });
                   },
                   child: Text(
-                    expandedAbout ? 'Read less' : 'Read more',
+                    aboutController.expandedAbout.value
+                        ? 'Read less'
+                        : 'Read more',
                     style: semiBoldTextStyle,
                   ),
                 ),
@@ -285,58 +301,89 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
               SizedBox(
                 height: verticalSpaceRegular,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: horizontalSpace),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.r),
-                    border: Border.all(
-                      width: 1,
-                      color: whiteColor.withOpacity(0.5),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Sales Activity',
-                        style: clashDisplayBoldTextStyle.copyWith(
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 16.w,
-                        height: 16.w,
-                        child: const Image(
-                          image:
-                              AssetImage('assets/icons/icon_arrow_right.png'),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: verticalSpaceRegular,
-              ),
-              expandedDetails
+
+              //NOTE: About Collection
+              aboutCollectionController.expandedAboutCollection.value
                   ?
                   //NOTE : Expanded Details
-                  DetailsExpanded(
+                  AboutCollectionExpanded(
                       onTap: () {
                         setState(() {
-                          expandedDetails = !expandedDetails;
-                          print(expandedDetails);
+                          aboutCollectionController
+                                  .expandedAboutCollection.value =
+                              !aboutCollectionController
+                                  .expandedAboutCollection.value;
                         });
                       },
                     )
                   : GestureDetector(
                       onTap: () {
                         setState(() {
-                          expandedDetails = !expandedDetails;
-                          print(expandedDetails);
+                          aboutCollectionController
+                                  .expandedAboutCollection.value =
+                              !aboutCollectionController
+                                  .expandedAboutCollection.value;
+                        });
+                      },
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: horizontalSpace),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
+                          height: 50.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                            border: Border.all(
+                              width: 1,
+                              color: whiteColor.withOpacity(0.5),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'About Collection',
+                                style: clashDisplayBoldTextStyle.copyWith(
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 16.w,
+                                height: 16.w,
+                                child: const Image(
+                                  image: AssetImage(
+                                      'assets/icons/icon_arrow_down.png'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+              SizedBox(
+                height: verticalSpaceMedium,
+              ),
+
+              //NOTE: Details
+              detailsController.expandedDetails.value
+                  ?
+                  //NOTE : Expanded Details
+                  DetailsExpanded(
+                      onTap: () {
+                        setState(() {
+                          detailsController.expandedDetails.value =
+                              !detailsController.expandedDetails.value;
+                          print(detailsController.expandedDetails.value);
+                        });
+                      },
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          detailsController.expandedDetails.value =
+                              !detailsController.expandedDetails.value;
+                          print(detailsController.expandedDetails.value);
                         });
                       },
                       child: Padding(
@@ -375,9 +422,132 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                       ),
                     ),
               SizedBox(
+                height: verticalSpaceMedium,
+              ),
+
+              //NOTE: Asset Properties
+              assetPropertiesController.expandedProperties.value
+                  ?
+                  //NOTE : Expanded Details
+                  AssetPropertiesExpanded(
+                      onTap: () {
+                        setState(() {
+                          assetPropertiesController.expandedProperties.value =
+                              !assetPropertiesController
+                                  .expandedProperties.value;
+                        });
+                      },
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          assetPropertiesController.expandedProperties.value =
+                              !assetPropertiesController
+                                  .expandedProperties.value;
+                        });
+                      },
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: horizontalSpace),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
+                          height: 50.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                            border: Border.all(
+                              width: 1,
+                              color: whiteColor.withOpacity(0.5),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Asset Properties',
+                                style: clashDisplayBoldTextStyle.copyWith(
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 16.w,
+                                height: 16.w,
+                                child: const Image(
+                                  image: AssetImage(
+                                      'assets/icons/icon_arrow_down.png'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+              SizedBox(
+                height: verticalSpaceMedium,
+              ),
+
+              //NOTE: Sales Activity
+              salesActivityController.expandedSalesActivity.value
+                  ?
+                  //NOTE : Expanded Details
+                  SalesActivityExpanded(
+                      onTap: () {
+                        setState(() {
+                          salesActivityController.expandedSalesActivity.value =
+                              !salesActivityController
+                                  .expandedSalesActivity.value;
+                        });
+                      },
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          salesActivityController.expandedSalesActivity.value =
+                              !salesActivityController
+                                  .expandedSalesActivity.value;
+                        });
+                      },
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: horizontalSpace),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
+                          height: 50.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                            border: Border.all(
+                              width: 1,
+                              color: whiteColor.withOpacity(0.5),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Sales Activity',
+                                style: clashDisplayBoldTextStyle.copyWith(
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 16.w,
+                                height: 16.w,
+                                child: const Image(
+                                  image: AssetImage(
+                                      'assets/icons/icon_arrow_down.png'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+              //NOTE: More
+              SizedBox(
                 height: verticalSpaceRegular,
               ),
-              GroupTitle(title: 'Discovery'),
+              GroupTitle(title: 'More from this Collection'),
               Container(
                 padding: EdgeInsets.only(left: 24.w),
                 child: GridView.count(
@@ -462,6 +632,74 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
   }
 }
 
+class AboutCollectionExpanded extends StatelessWidget {
+  AboutCollectionExpanded({
+    Key? key,
+    required this.onTap,
+  }) : super(key: key);
+  void Function() onTap;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: horizontalSpace),
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        // height: 50.h,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(
+            width: 1,
+            color: whiteColor.withOpacity(0.5),
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: onTap,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'About Collection',
+                    style: clashDisplayBoldTextStyle.copyWith(
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 16.w,
+                    height: 16.w,
+                    child: const Image(
+                      image: AssetImage('assets/icons/icon_arrow_up.png'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: verticalSpaceMedium,
+            ),
+            Container(
+              height: 1,
+              color: whiteColor.withOpacity(0.5),
+            ),
+            SizedBox(
+              height: verticalSpaceMedium,
+            ),
+            Text(
+              'Lorem ipsum dolor sit amet consectetur. Risus habitant interdum vivamus suspendisse neque elit dolor morbi ut.',
+              style: regularTextStyle.copyWith(
+                fontSize: 16.sp,
+                color: whiteColor.withOpacity(0.7),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class DetailsExpanded extends StatelessWidget {
   DetailsExpanded({
     Key? key,
@@ -526,7 +764,7 @@ class DetailsExpanded extends StatelessWidget {
               height: 8.h,
             ),
             SizedBox(
-              width: deviceWidth - 148.w,
+              width: deviceWidth - 48.w,
               child: Row(
                 children: [
                   Container(
@@ -548,12 +786,27 @@ class DetailsExpanded extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Hamzah Mashere',
-                        style: clashDisplayBoldTextStyle.copyWith(
-                          color: blueColor,
-                          fontSize: 16.sp,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            'Hamzah Mashere',
+                            style: clashDisplayBoldTextStyle.copyWith(
+                              color: blueColor,
+                              fontSize: 16.sp,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          SizedBox(
+                            width: 16.w,
+                            height: 16.w,
+                            child: const Image(
+                              image:
+                                  AssetImage('assets/icons/icon_verified.png'),
+                            ),
+                          ),
+                        ],
                       ),
                       Text(
                         '0x1647...0f43b87332',
@@ -608,12 +861,27 @@ class DetailsExpanded extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Badawi.SAR',
-                        style: clashDisplayBoldTextStyle.copyWith(
-                          color: blueColor,
-                          fontSize: 16.sp,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            'Badawi.SAR',
+                            style: clashDisplayBoldTextStyle.copyWith(
+                              color: blueColor,
+                              fontSize: 16.sp,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          SizedBox(
+                            width: 16.w,
+                            height: 16.w,
+                            child: const Image(
+                              image:
+                                  AssetImage('assets/icons/icon_verified.png'),
+                            ),
+                          ),
+                        ],
                       ),
                       Text(
                         '0x1647...0f43b87332',
@@ -636,44 +904,130 @@ class DetailsExpanded extends StatelessWidget {
             SizedBox(
               height: verticalSpaceMedium,
             ),
-            Text(
-              'Asset Properties',
-              style: clashDisplayBoldTextStyle.copyWith(
-                fontSize: 16.sp,
+            Container(
+              margin: EdgeInsets.only(bottom: 8.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Contract Address',
+                    style: regularTextStyle.copyWith(
+                      color: whiteColor,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                  Text(
+                    '0x1647...7332',
+                    style: mediumTextStyle.copyWith(
+                      color: blueColor,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            DetailsRowSingle(
+              title: 'Token ID',
+              value: '877',
+            ),
+            DetailsRowSingle(
+              title: 'Token Standard',
+              value: 'ERC-721',
+            ),
+            DetailsRowSingle(
+              title: 'Blockchain',
+              value: 'ETHEREUM',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AssetPropertiesExpanded extends StatelessWidget {
+  AssetPropertiesExpanded({
+    Key? key,
+    required this.onTap,
+  }) : super(key: key);
+  void Function() onTap;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: horizontalSpace),
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        // height: 50.h,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(
+            width: 1,
+            color: whiteColor.withOpacity(0.5),
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: onTap,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Asset Properties',
+                    style: clashDisplayBoldTextStyle.copyWith(
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 16.w,
+                    height: 16.w,
+                    child: const Image(
+                      image: AssetImage('assets/icons/icon_arrow_up.png'),
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(
-              height: 8.h,
+              height: verticalSpaceMedium,
             ),
-            AssetPropertySingle(
+            Container(
+              height: 1,
+              color: whiteColor.withOpacity(0.5),
+            ),
+            SizedBox(
+              height: verticalSpaceMedium,
+            ),
+            AssetPropertiesRowSingle(
               title: 'Clothes',
               value: 'Work vest',
             ),
-            AssetPropertySingle(
+            AssetPropertiesRowSingle(
               title: 'Eyes',
               value: 'Eyepatch',
             ),
-            AssetPropertySingle(
+            AssetPropertiesRowSingle(
               title: 'Hat',
               value: 'Sea Captain’s Hat',
             ),
-            AssetPropertySingle(
+            AssetPropertiesRowSingle(
               title: 'Background',
               value: 'Purple',
             ),
-            AssetPropertySingle(
+            AssetPropertiesRowSingle(
               title: 'Trait Count',
               value: '6',
             ),
-            AssetPropertySingle(
+            AssetPropertiesRowSingle(
               title: 'Fur',
               value: 'Tan',
             ),
-            AssetPropertySingle(
+            AssetPropertiesRowSingle(
               title: 'Mouth',
               value: 'Bored Unshaven',
             ),
-            AssetPropertySingle(
+            AssetPropertiesRowSingle(
               title: 'Earring',
               value: 'None',
             ),
@@ -684,8 +1038,224 @@ class DetailsExpanded extends StatelessWidget {
   }
 }
 
-class AssetPropertySingle extends StatelessWidget {
-  AssetPropertySingle({
+class SalesActivityExpanded extends StatelessWidget {
+  SalesActivityExpanded({
+    Key? key,
+    required this.onTap,
+  }) : super(key: key);
+  void Function() onTap;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: horizontalSpace),
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        // height: 50.h,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(
+            width: 1,
+            color: whiteColor.withOpacity(0.5),
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: onTap,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Sales Activity',
+                    style: clashDisplayBoldTextStyle.copyWith(
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 16.w,
+                    height: 16.w,
+                    child: const Image(
+                      image: AssetImage('assets/icons/icon_arrow_up.png'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SalesActivitySingle(
+              title: 'Sougen Genesis#123',
+              byName: '@Sugen_Dad',
+              toName: '@Jahari_Official',
+              time: '24 minutes ago',
+              price: '9,000 SAR',
+            ),
+            SalesActivitySingle(
+              title: 'Sougen Genesis#123',
+              byName: '@Sugen_Dad',
+              toName: '@Jahari_Official',
+              time: '24 minutes ago',
+              price: '9,000 SAR',
+            ),
+            SalesActivitySingle(
+              title: 'Sougen Genesis#123',
+              byName: '@Sugen_Dad',
+              toName: '@Jahari_Official',
+              time: '24 minutes ago',
+              price: '9,000 SAR',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SalesActivitySingle extends StatelessWidget {
+  SalesActivitySingle({
+    Key? key,
+    required this.title,
+    required this.byName,
+    required this.toName,
+    required this.price,
+    required this.time,
+  }) : super(key: key);
+
+  String title, byName, toName, price, time;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          height: verticalSpaceMedium,
+        ),
+        Container(
+          height: 1,
+          color: whiteColor.withOpacity(0.5),
+        ),
+        SizedBox(
+          height: verticalSpaceMedium,
+        ),
+        SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    title,
+                    style: clashDisplayBoldTextStyle.copyWith(fontSize: 14.sp),
+                  ),
+                  Text(
+                    'Place a bid',
+                    style: mediumTextStyle.copyWith(
+                      color: whiteColor,
+                      fontSize: 12.sp,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'By: ',
+                        style: mediumTextStyle.copyWith(fontSize: 12.sp),
+                      ),
+                      Text(
+                        byName,
+                        style: mediumTextStyle.copyWith(
+                          fontSize: 12.sp,
+                          color: whiteColor.withOpacity(0.7),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    price,
+                    style: clashDisplayBoldTextStyle.copyWith(
+                      color: whiteColor,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'To: ',
+                        style: mediumTextStyle.copyWith(fontSize: 12.sp),
+                      ),
+                      Text(
+                        toName,
+                        style: mediumTextStyle.copyWith(
+                          fontSize: 12.sp,
+                          color: whiteColor.withOpacity(0.7),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    time,
+                    style: mediumTextStyle.copyWith(
+                      color: whiteColor.withOpacity(0.7),
+                      fontSize: 12.sp,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class DetailsRowSingle extends StatelessWidget {
+  DetailsRowSingle({
+    Key? key,
+    required this.title,
+    required this.value,
+  }) : super(key: key);
+
+  String title;
+  String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 8.h),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: regularTextStyle.copyWith(
+              color: whiteColor,
+              fontSize: 14.sp,
+            ),
+          ),
+          Text(
+            value,
+            style: mediumTextStyle.copyWith(
+              color: whiteColor.withOpacity(0.7),
+              fontSize: 14.sp,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class AssetPropertiesRowSingle extends StatelessWidget {
+  AssetPropertiesRowSingle({
     Key? key,
     required this.title,
     required this.value,
