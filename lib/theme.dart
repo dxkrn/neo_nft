@@ -47,5 +47,6 @@ TextStyle regularTextStyle = GoogleFonts.inter(
 double deviceWidth = Get.width;
 double deviceHeight = Get.height;
 double horizontalSpace = 24.w;
+double verticalSpaceSmall = 8.h;
 double verticalSpaceMedium = 16.h;
 double verticalSpaceRegular = 24.h;
