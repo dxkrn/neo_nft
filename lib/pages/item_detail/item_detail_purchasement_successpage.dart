@@ -10,14 +10,16 @@ import 'package:neo_nft/widgets/custom_button_border.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 import 'package:neo_nft/widgets/group_title.dart';
 
-class ItemDetailPage extends StatefulWidget {
-  const ItemDetailPage({super.key});
+class ItemDetailPurchasementSuccessPage extends StatefulWidget {
+  const ItemDetailPurchasementSuccessPage({super.key});
 
   @override
-  State<ItemDetailPage> createState() => _ItemDetailPageState();
+  State<ItemDetailPurchasementSuccessPage> createState() =>
+      _ItemDetailPurchasementSuccessPage();
 }
 
-class _ItemDetailPageState extends State<ItemDetailPage> {
+class _ItemDetailPurchasementSuccessPage
+    extends State<ItemDetailPurchasementSuccessPage> {
   //NOTE: Controllers
   final AboutController aboutController = Get.put(AboutController());
   final AboutCollectionController aboutCollectionController =
@@ -653,440 +655,93 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 height: 48.w,
                 text: 'Purchase',
                 onTap: () {
-                  Get.dialog(
-                    barrierColor: Colors.transparent,
-                    useSafeArea: false,
-                    barrierDismissible: true,
-                    // transitionDuration: Duration(milliseconds: 0),
-                    BlurryContainer(
-                      blur: 3,
-                      elevation: 0,
-                      color: blackColor.withOpacity(0.9),
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(8.r),
-                        bottomRight: Radius.circular(8.r),
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 14.w,
-                          vertical: 50.w,
-                        ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            // width: 330.w,
-                            // height: 490.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16.r),
-                              border: Border.all(
-                                width: 1,
-                                color: whiteColor.withOpacity(0.2),
-                              ),
-                            ),
-                            child: BlurryContainer(
-                              blur: 5,
-                              elevation: 0,
-                              color: whiteColor.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(16.r),
-                              child: Padding(
-                                padding: EdgeInsets.all(14.w),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Purchase',
-                                          style: clashDisplayBoldTextStyle
-                                              .copyWith(
-                                            fontSize: 24.sp,
-                                            color: whiteColor,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: verticalSpaceSmall,
-                                        ),
-                                        Text(
-                                          'You are about to purchase item from Azuki collection.',
-                                          style: regularTextStyle.copyWith(
-                                            fontSize: 14.sp,
-                                            color: whiteColor.withOpacity(0.7),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: verticalSpaceMedium,
-                                        ),
-                                        Text(
-                                          'Item',
-                                          style: clashDisplayBoldTextStyle
-                                              .copyWith(
-                                            fontSize: 20.sp,
-                                            color: whiteColor,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: verticalSpaceSmall,
-                                        ),
-                                        Container(
-                                          width: double.infinity,
-                                          height: 80.w,
-                                          padding: EdgeInsets.all(16.w),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(8.r),
-                                            border: Border.all(
-                                              width: 1,
-                                              color:
-                                                  whiteColor.withOpacity(0.7),
-                                            ),
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                width: 48.w,
-                                                height: 48.w,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    8.r,
-                                                  ),
-                                                  image: const DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/item_details/img_cube_collection.png'),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 6.w,
-                                              ),
-                                              Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  SizedBox(
-                                                    width: 180.w,
-                                                    child: Text(
-                                                      'NEO CUBE#381',
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style:
-                                                          clashDisplayBoldTextStyle,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 4.w,
-                                                  ),
-                                                  Text(
-                                                    '9000 SAR',
-                                                    style: mediumTextStyle
-                                                        .copyWith(
-                                                      color: whiteColor
-                                                          .withOpacity(0.7),
-                                                      fontSize: 14.sp,
-                                                    ),
-                                                  ),
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: verticalSpaceMedium,
-                                        ),
-                                        Text(
-                                          'Payment Method',
-                                          style: clashDisplayBoldTextStyle
-                                              .copyWith(
-                                            fontSize: 20.sp,
-                                            color: whiteColor,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: verticalSpaceSmall,
-                                        ),
-                                        Container(
-                                          width: double.infinity,
-                                          height: 80.w,
-                                          padding: EdgeInsets.all(16.w),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(8.r),
-                                            border: Border.all(
-                                              width: 1,
-                                              color:
-                                                  whiteColor.withOpacity(0.7),
-                                            ),
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Container(
-                                                    width: 48.w,
-                                                    height: 48.w,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        8.r,
-                                                      ),
-                                                      image:
-                                                          const DecorationImage(
-                                                        image: AssetImage(
-                                                            'assets/images/hesa/icon_hesa.png'),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 6.w,
-                                                  ),
-                                                  Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      SizedBox(
-                                                        width: 150.w,
-                                                        child: Text(
-                                                          'Hesa Wallet',
-                                                          maxLines: 1,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          style:
-                                                              clashDisplayBoldTextStyle,
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 4.w,
-                                                      ),
-                                                      Text(
-                                                        '1,000,000 SAR',
-                                                        style: mediumTextStyle
-                                                            .copyWith(
-                                                          color: whiteColor
-                                                              .withOpacity(0.7),
-                                                          fontSize: 14.sp,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  )
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                width: 12.w,
-                                                height: 12.w,
-                                                child: const Image(
-                                                  image: AssetImage(
-                                                      'assets/icons/icon_arrow_down.png'),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: verticalSpaceSmall,
-                                        ),
-                                        Text(
-                                          'Payment Summary',
-                                          style: clashDisplayBoldTextStyle
-                                              .copyWith(
-                                            fontSize: 20.sp,
-                                            color: whiteColor,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: verticalSpaceSmall,
-                                        ),
-                                        Row(
-                                          children: [
-                                            SizedBox(
-                                              width: (deviceWidth - 90.w) / 2,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    'NEO CUBE#381',
-                                                    style: regularTextStyle
-                                                        .copyWith(
-                                                      color: whiteColor
-                                                          .withOpacity(0.7),
-                                                      fontSize: 14.sp,
-                                                    ),
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                  SizedBox(
-                                                    height: verticalSpaceSmall,
-                                                  ),
-                                                  Text(
-                                                    'Transaction fee 15%',
-                                                    style: regularTextStyle
-                                                        .copyWith(
-                                                      color: whiteColor
-                                                          .withOpacity(0.7),
-                                                      fontSize: 14.sp,
-                                                    ),
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                  SizedBox(
-                                                    height: verticalSpaceSmall,
-                                                  ),
-                                                  Text(
-                                                    'Service fee',
-                                                    style: regularTextStyle
-                                                        .copyWith(
-                                                      color: whiteColor
-                                                          .withOpacity(0.7),
-                                                      fontSize: 14.sp,
-                                                    ),
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                  SizedBox(
-                                                    height: verticalSpaceSmall,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-
-                                            //NOTE: Value
-                                            SizedBox(
-                                              width: (deviceWidth - 90.w) / 2,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  Text(
-                                                    '800.00 SAR',
-                                                    style: regularTextStyle
-                                                        .copyWith(
-                                                      fontSize: 14.sp,
-                                                    ),
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                  SizedBox(
-                                                    height: verticalSpaceSmall,
-                                                  ),
-                                                  Text(
-                                                    '120.00 SAR',
-                                                    style: regularTextStyle
-                                                        .copyWith(
-                                                      fontSize: 14.sp,
-                                                    ),
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                  SizedBox(
-                                                    height: verticalSpaceSmall,
-                                                  ),
-                                                  Text(
-                                                    '10.00 SAR',
-                                                    style: regularTextStyle
-                                                        .copyWith(
-                                                      fontSize: 14.sp,
-                                                    ),
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: verticalSpaceSmall,
-                                        ),
-                                        Container(
-                                          width: double.infinity,
-                                          height: 1,
-                                          color: whiteColor,
-                                        ),
-                                        SizedBox(
-                                          height: verticalSpaceSmall,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              'Total',
-                                              style: regularTextStyle.copyWith(
-                                                color:
-                                                    whiteColor.withOpacity(0.7),
-                                                fontSize: 14.sp,
-                                              ),
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            Text(
-                                              '930.00 SAR',
-                                              style: regularTextStyle.copyWith(
-                                                fontSize: 14.sp,
-                                              ),
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-
-                                    //NOTE: Button Group
-                                    Column(
-                                      children: [
-                                        CustomButton(
-                                          width: double.infinity,
-                                          height: 48.w,
-                                          text: 'Purchase',
-                                          onTap: () {
-                                            Get.toNamed(
-                                                // 'ItemDetailPurchasementSuccessPage');
-                                                '/itemDetailPurchasementFailedPage');
-                                          },
-                                        ),
-                                        SizedBox(
-                                          height: verticalSpaceMedium,
-                                        ),
-                                        CustomButtonBorder(
-                                          width: double.infinity,
-                                          height: 48.w,
-                                          text: 'Cancel',
-                                          onTap: () {
-                                            Get.back();
-                                          },
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
                   // Get.toNamed('/itemDetailPurchasePage');
                 },
+              ),
+            ),
+            Container(
+              child: BlurryContainer(
+                blur: 3,
+                elevation: 0,
+                color: blackColor.withOpacity(0.9),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(8.r),
+                  bottomRight: Radius.circular(8.r),
+                ),
+                child: Container(),
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                width: 330.w,
+                height: 338.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16.r),
+                  border: Border.all(
+                    width: 1,
+                    color: whiteColor.withOpacity(0.2),
+                  ),
+                ),
+                child: BlurryContainer(
+                  blur: 5,
+                  elevation: 0,
+                  color: whiteColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(16.r),
+                  child: Padding(
+                    padding: EdgeInsets.all(24.w),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 64.w,
+                              height: 64.w,
+                              child: const Image(
+                                image: AssetImage(
+                                    'assets/icons/icon_purchase_success.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 24.w,
+                            ),
+                            Text(
+                              'Purchasement Success',
+                              style: clashDisplayBoldTextStyle.copyWith(
+                                fontSize: 24.sp,
+                                color: whiteColor,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: verticalSpaceSmall,
+                            ),
+                            Text(
+                              'Lorem ipsum dolor sit amet, consec adipiscing elit ultrices arcu.',
+                              style: regularTextStyle.copyWith(
+                                fontSize: 14.sp,
+                                color: whiteColor.withOpacity(0.7),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            CustomButton(
+                              width: double.infinity,
+                              height: 48.w,
+                              text: 'Done',
+                              onTap: () {},
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
           ],

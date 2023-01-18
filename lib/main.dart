@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
+import 'package:neo_nft/pages/item_detail/item_detail_purchasement_failed_page.dart';
+import 'package:neo_nft/pages/item_detail/item_detail_purchasement_successpage.dart';
 import 'package:neo_nft/pages/login_registration/faceid_page.dart';
 import 'package:neo_nft/pages/login_registration/fingerid_page.dart';
 import 'package:neo_nft/pages/login_registration/onboarding.dart';
@@ -186,6 +188,22 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/itemDetail',
             page: () => const ItemDetailPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/itemDetailPurchasementSuccessPage',
+            page: () => const ItemDetailPurchasementSuccessPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/itemDetailPurchasementFailedPage',
+            page: () => const ItemDetailPurchasementFailedPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,
