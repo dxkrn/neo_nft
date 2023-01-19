@@ -43,7 +43,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                   children: [
                     Container(
                       width: deviceWidth,
-                      height: 240.h,
+                      height: 240.w,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
@@ -53,19 +53,91 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                         ),
                       ),
                     ),
-                    SafeArea(
-                      child: GestureDetector(
-                        onTap: (() {
-                          Get.back();
-                        }),
-                        child: Container(
-                          margin: EdgeInsets.all(10.w),
-                          width: 40.h,
-                          height: 40.h,
-                          // color: whiteColor,
-                          child: const Image(
-                            image: AssetImage('assets/icons/icon_back.png'),
-                          ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 16.w),
+                      child: SafeArea(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              child: Container(
+                                margin: EdgeInsets.all(10.w),
+                                width: 40.w,
+                                height: 40.w,
+                                // color: whiteColor,
+                                child: const Image(
+                                  image:
+                                      AssetImage('assets/icons/icon_back.png'),
+                                ),
+                              ),
+                              onTap: () {
+                                Get.back();
+                              },
+                            ),
+                            GestureDetector(
+                              child: Container(
+                                margin: EdgeInsets.all(10.w),
+                                width: 32.w,
+                                height: 32.w,
+                                // color: whiteColor,
+                                child: const Image(
+                                  image: AssetImage(
+                                      'assets/icons/icon_more_vertical.png'),
+                                ),
+                              ),
+                              onTap: () {
+                                Get.dialog(
+                                  barrierColor: Colors.transparent,
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 65.w, right: 24.w),
+                                        child: BlurryContainer(
+                                          blur: 3,
+                                          elevation: 0,
+                                          color: blackColor.withOpacity(0.3),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r),
+                                          child: Container(
+                                            width: 220.w,
+                                            height: 200.w,
+                                            padding: EdgeInsets.all(8.w),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                MoreSingleButton(
+                                                  title: 'Edit',
+                                                  onTap: () {},
+                                                ),
+                                                MoreSingleButton(
+                                                  title: 'Sell Item',
+                                                  onTap: () {},
+                                                ),
+                                                MoreSingleButton(
+                                                  title: 'Gift',
+                                                  onTap: () {},
+                                                ),
+                                                MoreSingleButton(
+                                                  title: 'Promote',
+                                                  onTap: () {},
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -609,7 +681,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                   ),
                 ),
                 SizedBox(
-                  height: verticalSpaceRegular,
+                  height: 100.w,
                 ),
               ],
             ),
@@ -1090,6 +1162,36 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class MoreSingleButton extends StatelessWidget {
+  MoreSingleButton({
+    Key? key,
+    required this.title,
+    required this.onTap,
+  }) : super(key: key);
+  String title;
+  void Function() onTap;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        height: 40.w,
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        alignment: Alignment.centerLeft,
+        decoration: BoxDecoration(
+          border: Border.all(width: 1, color: whiteColor),
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: Text(
+          title,
+          style: semiBoldTextStyle,
         ),
       ),
     );

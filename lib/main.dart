@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_purchasement_failed_page.dart';
-import 'package:neo_nft/pages/item_detail/item_detail_purchasement_successpage.dart';
+import 'package:neo_nft/pages/item_detail/item_detail_purchasement_success_page.dart';
 import 'package:neo_nft/pages/login_registration/faceid_page.dart';
 import 'package:neo_nft/pages/login_registration/fingerid_page.dart';
 import 'package:neo_nft/pages/login_registration/onboarding.dart';
