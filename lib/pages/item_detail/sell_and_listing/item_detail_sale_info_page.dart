@@ -207,7 +207,7 @@ class _ItemDetailSaleInfoPageState extends State<ItemDetailSaleInfoPage> {
                 height: 48.w,
                 text: 'Continue',
                 onTap: () {
-                  Get.toNamed('/itemDetailTypeSalePage');
+                  Get.toNamed('/itemDetailItemListingPage');
                 },
               ),
             ),

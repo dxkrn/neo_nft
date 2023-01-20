@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_purchasement_failed_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_purchasement_success_page.dart';
+import 'package:neo_nft/pages/item_detail/sell_and_listing/item_detail_item_listing_page.dart';
+import 'package:neo_nft/pages/item_detail/sell_and_listing/item_detail_listing_fee_page.dart';
 import 'package:neo_nft/pages/item_detail/sell_and_listing/item_detail_promote_page.dart';
 import 'package:neo_nft/pages/item_detail/sell_and_listing/item_detail_sale_info_page.dart';
 import 'package:neo_nft/pages/item_detail/sell_and_listing/item_detail_type_sale_page.dart';
@@ -231,6 +233,22 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/itemDetailSaleInfoPage',
             page: () => const ItemDetailSaleInfoPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/itemDetailItemListingPage',
+            page: () => const ItemDetailItemListingPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/itemDetailListingFeePage',
+            page: () => const ItemDetailListingFeePage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,
