@@ -463,7 +463,7 @@ class _ItemDetailListingFeePageState extends State<ItemDetailListingFeePage> {
                                       text: 'Pay',
                                       onTap: () {
                                         Get.toNamed(
-                                            '/itemDetailPurchasementFailedPage');
+                                            '/itemDetailListingFailedPage');
                                       },
                                     ),
                                     SizedBox(
