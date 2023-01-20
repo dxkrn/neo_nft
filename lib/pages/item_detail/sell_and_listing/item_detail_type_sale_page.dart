@@ -84,7 +84,9 @@ class _ItemDetailTypeSalePageState extends State<ItemDetailTypeSalePage> {
                 width: deviceWidth - 48.w,
                 height: 48.w,
                 text: 'Continue',
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed('/itemDetailSaleInfoPage');
+                },
               ),
             ),
           ],
