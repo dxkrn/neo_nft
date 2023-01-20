@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_purchasement_failed_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_purchasement_success_page.dart';
+import 'package:neo_nft/pages/item_detail/sell_and_listing/item_detail_promote_page.dart';
 import 'package:neo_nft/pages/login_registration/faceid_page.dart';
 import 'package:neo_nft/pages/login_registration/fingerid_page.dart';
 import 'package:neo_nft/pages/login_registration/onboarding.dart';
@@ -204,6 +205,14 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/itemDetailPurchasementFailedPage',
             page: () => const ItemDetailPurchasementFailedPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/itemDetailPromotePage',
+            page: () => const ItemDetailPromotePage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,

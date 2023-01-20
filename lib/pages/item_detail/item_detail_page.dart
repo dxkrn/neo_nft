@@ -34,7 +34,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: CustomScaffoldBody(
         child: Stack(
           children: [
@@ -76,6 +76,14 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                               onTap: () {
                                 Get.back();
                               },
+                            ),
+
+                            //NOTE: Button Sementara
+                            ElevatedButton(
+                              onPressed: () {
+                                Get.toNamed('/itemDetailPromotePage');
+                              },
+                              child: Text('Promote'),
                             ),
 
                             //NOTE: Button More
