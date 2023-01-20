@@ -7,34 +7,26 @@ import 'package:neo_nft/widgets/custom_appbar.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 
-class ItemDetailPromotePage extends StatefulWidget {
-  const ItemDetailPromotePage({super.key});
+class ItemDetailTypeSalePage extends StatefulWidget {
+  const ItemDetailTypeSalePage({super.key});
 
   @override
-  State<ItemDetailPromotePage> createState() => _ItemDetailPromotePageState();
+  State<ItemDetailTypeSalePage> createState() => _ItemDetailTypeSalePageState();
 }
 
-class _ItemDetailPromotePageState extends State<ItemDetailPromotePage> {
+class _ItemDetailTypeSalePageState extends State<ItemDetailTypeSalePage> {
   List<Widget> buttonList = [
-    PromoteTypeButton(
-      title: 'Mobile App Home Page Banner',
+    TypeSaleButton(
+      title: 'Fixed Price',
+      desc: 'A single digital asset belongs to no specific collection',
+      imgSrc: 'assets/icons/icon_fixed_price.png',
       id: 0,
     ),
-    PromoteTypeButton(
-      title: 'Web Home Page Banner',
+    TypeSaleButton(
+      title: 'Timed Auction',
+      desc: 'Create a collection of specific digital assets',
+      imgSrc: 'assets/icons/icon_timed_auction.png',
       id: 1,
-    ),
-    PromoteTypeButton(
-      title: 'Mobile App & Web Home Page Banner',
-      id: 2,
-    ),
-    PromoteTypeButton(
-      title: 'Announce as Part of NEO NFT Newsletter Feeds',
-      id: 3,
-    ),
-    PromoteTypeButton(
-      title: 'Push Notification',
-      id: 4,
     ),
   ];
 
@@ -43,7 +35,7 @@ class _ItemDetailPromotePageState extends State<ItemDetailPromotePage> {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      appBar: CustomAppbar('Promote'),
+      appBar: CustomAppbar('List Items\nfor sale'),
       body: CustomScaffoldBody(
         child: Stack(
           children: [
@@ -61,7 +53,7 @@ class _ItemDetailPromotePageState extends State<ItemDetailPromotePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Promote Your Assets',
+                        'Type of Sale',
                         style:
                             clashDisplayBoldTextStyle.copyWith(fontSize: 24.sp),
                       ),
@@ -69,7 +61,7 @@ class _ItemDetailPromotePageState extends State<ItemDetailPromotePage> {
                         height: verticalSpaceSmall,
                       ),
                       Text(
-                        'Choose how you would like to promote your assets.',
+                        'Lorem ipsum dolor sit amet consectetur. Risus habitant interdum vivamus.',
                         style: regularTextStyle.copyWith(
                           color: whiteColor.withOpacity(0.7),
                         ),
@@ -92,9 +84,7 @@ class _ItemDetailPromotePageState extends State<ItemDetailPromotePage> {
                 width: deviceWidth - 48.w,
                 height: 48.w,
                 text: 'Continue',
-                onTap: () {
-                  Get.toNamed('/itemDetailTypeSalePage');
-                },
+                onTap: () {},
               ),
             ),
           ],
@@ -104,29 +94,32 @@ class _ItemDetailPromotePageState extends State<ItemDetailPromotePage> {
   }
 }
 
-class PromoteTypeButton extends StatefulWidget {
-  PromoteTypeButton({
+class TypeSaleButton extends StatefulWidget {
+  TypeSaleButton({
     Key? key,
     required this.title,
+    required this.desc,
+    required this.imgSrc,
     required this.id,
   }) : super(key: key);
 
-  String title;
+  String title, desc, imgSrc;
   int id;
 
   @override
-  State<PromoteTypeButton> createState() => _PromoteTypeButtonState();
+  State<TypeSaleButton> createState() => _TypeSaleButtonState();
 }
 
-class _PromoteTypeButtonState extends State<PromoteTypeButton> {
-  final ItemPromoteController itemPromoteController =
-      Get.put(ItemPromoteController());
+class _TypeSaleButtonState extends State<TypeSaleButton> {
+  //NOTE: Controller
+  final ItemTypeSaleController itemTypeSaleController =
+      Get.put(ItemTypeSaleController());
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        itemPromoteController.selectedButton.value = widget.id;
+        itemTypeSaleController.selectedButton.value = widget.id;
       },
       child: Obx(
         () => Container(
@@ -137,14 +130,48 @@ class _PromoteTypeButtonState extends State<PromoteTypeButton> {
             borderRadius: BorderRadius.circular(8.r),
             border: Border.all(
               width: 1,
-              color: widget.id != itemPromoteController.selectedButton.value
+              color: widget.id != itemTypeSaleController.selectedButton.value
                   ? whiteColor.withOpacity(0.7)
                   : cyanColor,
             ),
           ),
-          child: Text(
-            widget.title,
-            style: boldTextStyle,
+          child: Row(
+            children: [
+              SizedBox(
+                width: 48.w,
+                height: 48.w,
+                child: Image(
+                  image: AssetImage(
+                    widget.imgSrc,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 16.w,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.title,
+                    style: boldTextStyle,
+                  ),
+                  SizedBox(
+                    width: deviceWidth - 150.w,
+                    child: Text(
+                      widget.desc,
+                      style: mediumTextStyle.copyWith(
+                        fontSize: 14.sp,
+                        color: whiteColor.withOpacity(0.7),
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
