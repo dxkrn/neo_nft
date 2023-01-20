@@ -7,6 +7,7 @@ import 'package:neo_nft/theme.dart';
 import 'package:neo_nft/widgets/common_card.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
 import 'package:neo_nft/widgets/custom_button_border.dart';
+import 'package:neo_nft/widgets/custom_button_warning.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 import 'package:neo_nft/widgets/group_title.dart';
 
@@ -33,6 +34,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
       body: CustomScaffoldBody(
         child: Stack(
           children: [
@@ -59,6 +61,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            //NOTE: Button Back
                             GestureDetector(
                               child: Container(
                                 margin: EdgeInsets.all(10.w),
@@ -74,6 +77,8 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                                 Get.back();
                               },
                             ),
+
+                            //NOTE: Button More
                             GestureDetector(
                               child: Container(
                                 margin: EdgeInsets.all(10.w),
@@ -100,12 +105,21 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                                           blur: 3,
                                           elevation: 0,
                                           color: blackColor.withOpacity(0.3),
+                                          padding: const EdgeInsets.all(0),
                                           borderRadius:
                                               BorderRadius.circular(8.r),
                                           child: Container(
                                             width: 220.w,
                                             height: 200.w,
                                             padding: EdgeInsets.all(8.w),
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  width: 1,
+                                                  color: whiteColor
+                                                      .withOpacity(0.1)),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.r),
+                                            ),
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
@@ -203,14 +217,361 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              width: 24.w,
-                              height: 24.w,
-                              child: const Image(
-                                image: AssetImage(
-                                  'assets/icons/icon_flag.png',
+
+                            //NOTE: Button Report / Button Flag
+                            GestureDetector(
+                              child: SizedBox(
+                                width: 24.w,
+                                height: 24.w,
+                                child: const Image(
+                                  image: AssetImage(
+                                    'assets/icons/icon_flag.png',
+                                  ),
                                 ),
                               ),
+                              onTap: () {
+                                Get.bottomSheet(
+                                  barrierColor: Colors.transparent,
+                                  elevation: 0,
+                                  ListView(
+                                    physics: const BouncingScrollPhysics(),
+                                    children: [
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          BlurryContainer(
+                                            blur: 3,
+                                            elevation: 0,
+                                            color: blurryBGColor,
+                                            padding: const EdgeInsets.all(0),
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(24.r),
+                                              topRight: Radius.circular(24.r),
+                                            ),
+                                            child: Container(
+                                              width: deviceWidth,
+                                              height: 447.w,
+                                              padding: EdgeInsets.only(
+                                                top: 8.w,
+                                                left: 24.w,
+                                                right: 24.w,
+                                                bottom: 32.w,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    width: 1,
+                                                    color: whiteColor
+                                                        .withOpacity(0.1)),
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft:
+                                                      Radius.circular(24.r),
+                                                  topRight:
+                                                      Radius.circular(24.r),
+                                                ),
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Container(
+                                                            width: 134.w,
+                                                            height: 5.w,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: whiteColor,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          24.r),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      SizedBox(
+                                                        height:
+                                                            verticalSpaceMedium,
+                                                      ),
+                                                      Text(
+                                                        'Report this item',
+                                                        style:
+                                                            clashDisplayBoldTextStyle
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        24.sp),
+                                                      ),
+                                                      SizedBox(
+                                                        height:
+                                                            verticalSpaceRegular,
+                                                      ),
+
+                                                      //NOTE: Reason Dropdown
+                                                      Text(
+                                                        'Reason',
+                                                        style:
+                                                            clashDisplayBoldTextStyle,
+                                                      ),
+                                                      SizedBox(
+                                                        height:
+                                                            verticalSpaceSmall,
+                                                      ),
+                                                      Container(
+                                                        width: double.infinity,
+                                                        height: 48.w,
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                          horizontal: 16.w,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          border: Border.all(
+                                                            width: 1,
+                                                            color: whiteColor
+                                                                .withOpacity(
+                                                                    0.7),
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.r),
+                                                        ),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Text(
+                                                              'Select a reason',
+                                                              style:
+                                                                  regularTextStyle,
+                                                            ),
+                                                            SizedBox(
+                                                              width: 24.w,
+                                                              height: 24.w,
+                                                              child:
+                                                                  const Image(
+                                                                image: AssetImage(
+                                                                    'assets/icons/icon_arrow_down.png'),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height:
+                                                            verticalSpaceMedium,
+                                                      ),
+
+                                                      //NOTE: addtictional Comments
+                                                      Text(
+                                                        'Addictional Comments',
+                                                        style:
+                                                            clashDisplayBoldTextStyle,
+                                                      ),
+                                                      SizedBox(
+                                                        height:
+                                                            verticalSpaceSmall,
+                                                      ),
+                                                      Container(
+                                                        width: double.infinity,
+                                                        height: 120.w,
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                                horizontal:
+                                                                    16.w),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          border: Border.all(
+                                                            width: 1,
+                                                            color: whiteColor
+                                                                .withOpacity(
+                                                                    0.7),
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.r),
+                                                        ),
+                                                        child: TextField(
+                                                          cursorColor:
+                                                              whiteColor,
+                                                          style:
+                                                              regularTextStyle,
+                                                          maxLines: 5,
+                                                          decoration:
+                                                              InputDecoration(
+                                                            border: InputBorder
+                                                                .none,
+                                                            hintStyle:
+                                                                regularTextStyle
+                                                                    .copyWith(
+                                                              color: whiteColor
+                                                                  .withOpacity(
+                                                                      0.2),
+                                                            ),
+                                                            hintText:
+                                                                'Explain why you are concerned about this item',
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  CustomButtonWarning(
+                                                    width: double.infinity,
+                                                    height: 48.w,
+                                                    text: 'Report',
+                                                    onTap: () {
+                                                      //NOTE: Dialog Report Submitted
+                                                      Get.dialog(
+                                                        barrierColor:
+                                                            Colors.transparent,
+                                                        Stack(
+                                                          children: [
+                                                            BlurryContainer(
+                                                              blur: 3,
+                                                              elevation: 0,
+                                                              color: blackColor
+                                                                  .withOpacity(
+                                                                      0.9),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        8.r),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        8.r),
+                                                              ),
+                                                              child:
+                                                                  Container(),
+                                                            ),
+                                                            Align(
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
+                                                              child: Container(
+                                                                width: 330.w,
+                                                                height: 338.w,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              16.r),
+                                                                  border: Border
+                                                                      .all(
+                                                                    width: 1,
+                                                                    color: whiteColor
+                                                                        .withOpacity(
+                                                                            0.2),
+                                                                  ),
+                                                                ),
+                                                                child:
+                                                                    BlurryContainer(
+                                                                  blur: 5,
+                                                                  elevation: 0,
+                                                                  color: whiteColor
+                                                                      .withOpacity(
+                                                                          0.1),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              16.r),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsets
+                                                                        .all(24
+                                                                            .w),
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceBetween,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        Column(
+                                                                          children: [
+                                                                            SizedBox(
+                                                                              width: 64.w,
+                                                                              height: 64.w,
+                                                                              child: const Image(
+                                                                                image: AssetImage('assets/icons/icon_report_success.png'),
+                                                                              ),
+                                                                            ),
+                                                                            SizedBox(
+                                                                              height: 24.w,
+                                                                            ),
+                                                                            Text(
+                                                                              'Report Submitted',
+                                                                              style: clashDisplayBoldTextStyle.copyWith(
+                                                                                fontSize: 24.sp,
+                                                                                color: whiteColor,
+                                                                              ),
+                                                                              textAlign: TextAlign.center,
+                                                                            ),
+                                                                            SizedBox(
+                                                                              height: verticalSpaceSmall,
+                                                                            ),
+                                                                            Text(
+                                                                              'Thank you, your report will be reviewed by our team.',
+                                                                              style: regularTextStyle.copyWith(
+                                                                                fontSize: 14.sp,
+                                                                                color: whiteColor.withOpacity(0.7),
+                                                                              ),
+                                                                              textAlign: TextAlign.center,
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        Column(
+                                                                          children: [
+                                                                            CustomButton(
+                                                                              width: double.infinity,
+                                                                              height: 48.w,
+                                                                              text: 'Done',
+                                                                              onTap: () {
+                                                                                Get.back();
+                                                                                Get.back();
+                                                                              },
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             )
                           ],
                         ),
