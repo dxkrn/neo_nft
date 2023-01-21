@@ -11,18 +11,18 @@ import 'package:neo_nft/widgets/custom_button_warning.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 import 'package:neo_nft/widgets/group_title.dart';
 
-class ItemDetailPage extends StatefulWidget {
-  const ItemDetailPage({super.key});
+class ItemDetailNoCollectionPage extends StatefulWidget {
+  const ItemDetailNoCollectionPage({super.key});
 
   @override
-  State<ItemDetailPage> createState() => _ItemDetailPageState();
+  State<ItemDetailNoCollectionPage> createState() =>
+      _ItemDetailNoCollectionPageState();
 }
 
-class _ItemDetailPageState extends State<ItemDetailPage> {
+class _ItemDetailNoCollectionPageState
+    extends State<ItemDetailNoCollectionPage> {
   //NOTE: Controllers
   final AboutController aboutController = Get.put(AboutController());
-  final AboutCollectionController aboutCollectionController =
-      Get.put(AboutCollectionController());
   final DetailsController detailsController = Get.put(DetailsController());
   final AssetPropertiesController assetPropertiesController =
       Get.put(AssetPropertiesController());
@@ -76,14 +76,6 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                               onTap: () {
                                 Get.back();
                               },
-                            ),
-
-                            //NOTE: Button Sementara
-                            ElevatedButton(
-                              onPressed: () {
-                                Get.toNamed('/itemDetailPromotePage');
-                              },
-                              child: Text('Promote'),
                             ),
 
                             //NOTE: Button More
@@ -167,33 +159,6 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 ),
                 SizedBox(
                   height: 32.h,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Cube Collection',
-                        style: mediumTextStyle.copyWith(
-                          color: blueColor,
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 8.w,
-                      ),
-                      SizedBox(
-                        width: 16.w,
-                        height: 16.w,
-                        child: const Image(
-                            image:
-                                AssetImage('assets/icons/icon_verified.png')),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 8.h,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -684,69 +649,6 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 ),
                 SizedBox(
                   height: verticalSpaceRegular,
-                ),
-
-                //NOTE: About Collection
-                aboutCollectionController.expandedAboutCollection.value
-                    ?
-                    //NOTE : Expanded Details
-                    AboutCollectionExpanded(
-                        onTap: () {
-                          setState(() {
-                            aboutCollectionController
-                                    .expandedAboutCollection.value =
-                                !aboutCollectionController
-                                    .expandedAboutCollection.value;
-                          });
-                        },
-                      )
-                    : GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            aboutCollectionController
-                                    .expandedAboutCollection.value =
-                                !aboutCollectionController
-                                    .expandedAboutCollection.value;
-                          });
-                        },
-                        child: Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: horizontalSpace),
-                          child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 16.w),
-                            height: 50.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.r),
-                              border: Border.all(
-                                width: 1,
-                                color: whiteColor.withOpacity(0.5),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'About Collection',
-                                  style: clashDisplayBoldTextStyle.copyWith(
-                                    fontSize: 14.sp,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 16.w,
-                                  height: 16.w,
-                                  child: const Image(
-                                    image: AssetImage(
-                                        'assets/icons/icon_arrow_down.png'),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-
-                SizedBox(
-                  height: verticalSpaceMedium,
                 ),
 
                 //NOTE: Details
@@ -1487,74 +1389,6 @@ class MoreSingleButton extends StatelessWidget {
         child: Text(
           title,
           style: semiBoldTextStyle,
-        ),
-      ),
-    );
-  }
-}
-
-class AboutCollectionExpanded extends StatelessWidget {
-  AboutCollectionExpanded({
-    Key? key,
-    required this.onTap,
-  }) : super(key: key);
-  void Function() onTap;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: horizontalSpace),
-      child: Container(
-        padding: EdgeInsets.all(16.w),
-        // height: 50.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(
-            width: 1,
-            color: whiteColor.withOpacity(0.5),
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GestureDetector(
-              onTap: onTap,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'About Collection',
-                    style: clashDisplayBoldTextStyle.copyWith(
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 16.w,
-                    height: 16.w,
-                    child: const Image(
-                      image: AssetImage('assets/icons/icon_arrow_up.png'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: verticalSpaceMedium,
-            ),
-            Container(
-              height: 1,
-              color: whiteColor.withOpacity(0.5),
-            ),
-            SizedBox(
-              height: verticalSpaceMedium,
-            ),
-            Text(
-              'Lorem ipsum dolor sit amet consectetur. Risus habitant interdum vivamus suspendisse neque elit dolor morbi ut.',
-              style: regularTextStyle.copyWith(
-                fontSize: 16.sp,
-                color: whiteColor.withOpacity(0.7),
-              ),
-            ),
-          ],
         ),
       ),
     );
