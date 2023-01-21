@@ -24,78 +24,83 @@ class Onboarding extends StatelessWidget {
               ),
             ),
             Center(
-              child: Column(
+              child: ListView(
+                physics: const BouncingScrollPhysics(),
                 children: [
-                  SizedBox(
-                    height: 110.h,
-                  ),
-                  SizedBox(
-                    width: 262.w,
-                    height: 146.w,
-                    child: const Image(
-                      image: AssetImage('assets/images/img_logo.png'),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 110.h,
-                  ),
-                  SizedBox(
-                    width: 327.w,
-                    child: Text(
-                      'The New World\nis Here',
-                      style: clashDisplayBoldTextStyle.copyWith(
-                        fontSize: 32.sp,
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 110.h,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  SizedBox(
-                    width: 327.w,
-                    child: Text(
-                      'Bytes and Pixels -\na World of New Assets.',
-                      style: regularTextStyle.copyWith(
-                        color: whiteColor.withOpacity(0.7),
+                      SizedBox(
+                        width: 262.w,
+                        height: 146.w,
+                        child: const Image(
+                          image: AssetImage('assets/images/img_logo.png'),
+                        ),
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 32.h,
-                  ),
-                  CustomButton(
-                    width: 327.w,
-                    height: 48.w,
-                    text: 'Create an account',
-                    onTap: () {
-                      print('tapped');
-                      Get.toNamed('/signupPage');
-                    },
-                  ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  CustomButtonBorder(
-                    width: 327.w,
-                    height: 48.w,
-                    text: 'I already have an account',
-                    onTap: () {
-                      print('tapped');
-                      Get.toNamed('/signinPage');
-                    },
-                  ),
-                  SizedBox(
-                    height: 24.h,
-                  ),
-                  Text(
-                    ' Powered by\nAlMajra Blockchain Network',
-                    style: regularTextStyle.copyWith(
-                      color: whiteColor.withOpacity(0.7),
-                      fontSize: 12.sp,
-                    ),
-                    textAlign: TextAlign.center,
+                      SizedBox(
+                        height: 110.h,
+                      ),
+                      SizedBox(
+                        width: 327.w,
+                        child: Text(
+                          'The New World\nis Here',
+                          style: clashDisplayBoldTextStyle.copyWith(
+                            fontSize: 32.sp,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      SizedBox(
+                        width: 327.w,
+                        child: Text(
+                          'Bytes and Pixels -\na World of New Assets.',
+                          style: regularTextStyle.copyWith(
+                            color: whiteColor.withOpacity(0.7),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 32.h,
+                      ),
+                      CustomButton(
+                        width: 327.w,
+                        height: 48.w,
+                        text: 'Create an account',
+                        onTap: () {
+                          print('tapped');
+                          Get.toNamed('/signupPage');
+                        },
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      CustomButtonBorder(
+                        width: 327.w,
+                        height: 48.w,
+                        text: 'I already have an account',
+                        onTap: () {
+                          print('tapped');
+                          Get.toNamed('/signinPage');
+                        },
+                      ),
+                      SizedBox(
+                        height: 24.h,
+                      ),
+                      Text(
+                        ' Powered by\nAlMajra Blockchain Network',
+                        style: regularTextStyle.copyWith(
+                          color: whiteColor.withOpacity(0.7),
+                          fontSize: 12.sp,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -315,7 +315,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TopSellerCard(
-                          title: 'Meta-morphic',
+                          title: 'Meta-morphic fdsf dsf',
                           percent: 556.49,
                         ),
                         TopSellerCard(
@@ -537,8 +537,8 @@ class TopSellerCard extends StatelessWidget {
         right: 16.w,
       ),
       padding: EdgeInsets.only(left: 10.w),
-      width: 188.h,
-      height: 64.h,
+      width: 200.w,
+      height: 65.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
         border: Border.all(
@@ -549,8 +549,8 @@ class TopSellerCard extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 48.h,
-            height: 48.h,
+            width: 48.w,
+            height: 48.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.r),
               image: const DecorationImage(
@@ -564,50 +564,69 @@ class TopSellerCard extends StatelessWidget {
           SizedBox(
             width: 8.w,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    title,
-                    style: clashDisplayBoldTextStyle.copyWith(
-                      fontSize: 14.sp,
+          SizedBox(
+            width: 130.w,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    title.length >= 16
+                        ? SizedBox(
+                            width: 110.w,
+                            child: Text(
+                              title,
+                              style: clashDisplayBoldTextStyle.copyWith(
+                                fontSize: 14.sp,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.visible,
+                            ),
+                          )
+                        : SizedBox(
+                            child: Text(
+                              title,
+                              style: clashDisplayBoldTextStyle.copyWith(
+                                fontSize: 14.sp,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.visible,
+                            ),
+                          ),
+                    SizedBox(
+                      width: 4.w,
+                    ),
+                    SizedBox(
+                      width: 16.w,
+                      height: 16.w,
+                      child: const Image(
+                        image: AssetImage(
+                          'assets/icons/icon_verified.png',
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 4.h,
+                ),
+                SizedBox(
+                  width: 120.h,
+                  child: Text(
+                    '$percent%',
+                    style: mediumTextStyle.copyWith(
+                      color: greenColor,
+                      fontSize: 12.sp,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.clip,
                   ),
-                  SizedBox(
-                    width: 4.w,
-                  ),
-                  SizedBox(
-                    width: 16.w,
-                    height: 16.w,
-                    child: const Image(
-                      image: AssetImage(
-                        'assets/icons/icon_verified.png',
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 4.h,
-              ),
-              SizedBox(
-                width: 120.h,
-                child: Text(
-                  '$percent%',
-                  style: mediumTextStyle.copyWith(
-                    color: greenColor,
-                    fontSize: 12.sp,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.clip,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
