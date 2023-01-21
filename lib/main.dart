@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:neo_nft/pages/item_detail/item_detail_no_collection_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_purchasement_failed_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_purchasement_success_page.dart';
@@ -18,9 +19,9 @@ import 'package:neo_nft/pages/login_registration/signin_page.dart';
 import 'package:neo_nft/pages/login_registration/signin_with_email_page.dart';
 import 'package:neo_nft/pages/login_registration/signup_page.dart';
 import 'package:neo_nft/pages/login_registration/signup_with_email_page.dart';
-import 'package:neo_nft/pages/market_explorer/CollectionArtPage.dart';
-import 'package:neo_nft/pages/market_explorer/CollectionBidsPage.dart';
-import 'package:neo_nft/pages/market_explorer/CollectionCollectiblesPage.dart';
+import 'package:neo_nft/pages/market_explorer/collection_art_page.dart';
+import 'package:neo_nft/pages/market_explorer/collection_bids_page.dart';
+import 'package:neo_nft/pages/market_explorer/collection_collectibles_page.dart';
 import 'package:neo_nft/pages/market_explorer/market_explorer.dart';
 import 'package:neo_nft/pages/wallet_settings/add_bank_page.dart';
 import 'package:neo_nft/pages/wallet_settings/add_card_page.dart';
@@ -195,6 +196,14 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/itemDetail',
             page: () => const ItemDetailPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/itemDetailNoCollectionPage',
+            page: () => const ItemDetailNoCollectionPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,
