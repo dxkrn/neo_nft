@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -6,7 +5,6 @@ import 'package:neo_nft/controllers/signin_controller.dart';
 import 'package:neo_nft/theme.dart';
 import 'package:neo_nft/widgets/custom_appbar.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
-import 'package:neo_nft/widgets/custom_button_border_with_icon.dart';
 import 'package:neo_nft/widgets/custom_password_text_field.dart';
 import 'package:neo_nft/widgets/custom_text_field.dart';
 import 'package:neo_nft/widgets/login_signup_background.dart';
@@ -78,11 +76,11 @@ class _SigninWithEmailPageState extends State<SigninWithEmailPage> {
                             SizedBox(
                               height: verticalSpaceRegular,
                             ),
-                            CustomTextField(
+                            const CustomTextField(
                               title: 'Email address',
                               hint: 'Enter your email address...',
                             ),
-                            CustomPasswordTextField(
+                            const CustomPasswordTextField(
                               title: 'Password',
                               hint: 'Enter your password...',
                             ),
@@ -151,9 +149,7 @@ class _SigninWithEmailPageState extends State<SigninWithEmailPage> {
                                       decoration: TextDecoration.underline,
                                     ),
                                   ),
-                                  onTap: () {
-                                    print('Forgot my password tapped!');
-                                  },
+                                  onTap: () {},
                                 ),
                               ],
                             ),
