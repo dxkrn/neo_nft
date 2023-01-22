@@ -87,16 +87,16 @@ class OTPVerificationPage extends StatelessWidget {
                         SizedBox(
                           height: verticalSpaceRegular,
                         ),
-                        CustomTextField(
+                        const CustomTextField(
                           title: 'Bank Name',
                           hint: 'Enter bank name...',
                         ),
-                        CustomTextField(
+                        const CustomTextField(
                           title: 'Account IBAN Number',
                           hint: 'Enter account IBAN number...',
                           isNumber: true,
                         ),
-                        CustomTextField(
+                        const CustomTextField(
                           title: 'Account Holder Name',
                           hint: 'Enter account holder name...',
                         ),

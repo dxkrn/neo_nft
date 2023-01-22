@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:neo_nft/theme.dart';
 
 class CollectionCard extends StatelessWidget {
-  CollectionCard({
+  const CollectionCard({
     Key? key,
     required this.title,
     required this.pageName,
@@ -13,8 +13,8 @@ class CollectionCard extends StatelessWidget {
     required this.imgProfile,
     this.rightSpacing = true,
   }) : super(key: key);
-  String title, pageName, imgSrc, imgProfile;
-  bool rightSpacing;
+  final String title, pageName, imgSrc, imgProfile;
+  final bool rightSpacing;
   @override
   Widget build(BuildContext context) {
     return Row(

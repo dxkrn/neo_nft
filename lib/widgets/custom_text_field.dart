@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neo_nft/theme.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField({
+  const CustomTextField({
     Key? key,
     required this.title,
     required this.hint,
@@ -15,10 +14,10 @@ class CustomTextField extends StatelessWidget {
     this.maxLength = 999999,
   }) : super(key: key);
 
-  String title, hint;
-  bool hidePass, withIcon, isNumber;
-  double width;
-  int maxLength;
+  final String title, hint;
+  final bool hidePass, withIcon, isNumber;
+  final double width;
+  final int maxLength;
 
   @override
   Widget build(BuildContext context) {

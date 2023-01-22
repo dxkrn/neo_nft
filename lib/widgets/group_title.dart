@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neo_nft/theme.dart';
 
 class GroupTitle extends StatelessWidget {
-  GroupTitle({
+  const GroupTitle({
     Key? key,
     required this.title,
   }) : super(key: key);
-  String title;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Padding(

@@ -104,7 +104,7 @@ class CollectionArtPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GroupTitle(title: 'Discovery'),
+                const GroupTitle(title: 'Discovery'),
                 Container(
                   height: 18.w,
                   margin: EdgeInsets.only(
@@ -122,9 +122,7 @@ class CollectionArtPage extends StatelessWidget {
                             image: AssetImage('assets/icons/icon_search.png'),
                           ),
                         ),
-                        onTap: () {
-                          print('Search Icon Tapped!');
-                        },
+                        onTap: () {},
                       ),
                       SizedBox(
                         width: 16.w,
@@ -137,9 +135,7 @@ class CollectionArtPage extends StatelessWidget {
                             image: AssetImage('assets/icons/icon_setting.png'),
                           ),
                         ),
-                        onTap: () {
-                          print('Setting Icon Tapped!');
-                        },
+                        onTap: () {},
                       ),
                       // Text(
                       //   'Search',
@@ -164,7 +160,7 @@ class CollectionArtPage extends StatelessWidget {
                 crossAxisSpacing: 0,
                 mainAxisSpacing: verticalSpaceMedium,
                 childAspectRatio: 3 / 4,
-                children: [
+                children: const [
                   CommonCard(
                     title: 'Neo Cube#812',
                     price: '6,000',

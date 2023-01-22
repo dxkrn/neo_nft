@@ -16,23 +16,23 @@ class ItemDetailPromotePage extends StatefulWidget {
 
 class _ItemDetailPromotePageState extends State<ItemDetailPromotePage> {
   List<Widget> buttonList = [
-    PromoteTypeButton(
+    const PromoteTypeButton(
       title: 'Mobile App Home Page Banner',
       id: 0,
     ),
-    PromoteTypeButton(
+    const PromoteTypeButton(
       title: 'Web Home Page Banner',
       id: 1,
     ),
-    PromoteTypeButton(
+    const PromoteTypeButton(
       title: 'Mobile App & Web Home Page Banner',
       id: 2,
     ),
-    PromoteTypeButton(
+    const PromoteTypeButton(
       title: 'Announce as Part of NEO NFT Newsletter Feeds',
       id: 3,
     ),
-    PromoteTypeButton(
+    const PromoteTypeButton(
       title: 'Push Notification',
       id: 4,
     ),
@@ -105,14 +105,14 @@ class _ItemDetailPromotePageState extends State<ItemDetailPromotePage> {
 }
 
 class PromoteTypeButton extends StatefulWidget {
-  PromoteTypeButton({
+  const PromoteTypeButton({
     Key? key,
     required this.title,
     required this.id,
   }) : super(key: key);
 
-  String title;
-  int id;
+  final String title;
+  final int id;
 
   @override
   State<PromoteTypeButton> createState() => _PromoteTypeButtonState();

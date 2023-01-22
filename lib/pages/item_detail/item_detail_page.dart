@@ -83,7 +83,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                               onPressed: () {
                                 Get.toNamed('/itemDetailPromotePage');
                               },
-                              child: Text('Promote'),
+                              child: const Text('Promote'),
                             ),
 
                             //NOTE: Button More
@@ -590,7 +590,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 SizedBox(
                   height: verticalSpaceRegular,
                 ),
-                GroupTitle(title: 'About'),
+                const GroupTitle(title: 'About'),
                 Obx(
                   () => Container(
                     padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -758,7 +758,6 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                           setState(() {
                             detailsController.expandedDetails.value =
                                 !detailsController.expandedDetails.value;
-                            print(detailsController.expandedDetails.value);
                           });
                         },
                       )
@@ -767,7 +766,6 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                           setState(() {
                             detailsController.expandedDetails.value =
                                 !detailsController.expandedDetails.value;
-                            print(detailsController.expandedDetails.value);
                           });
                         },
                         child: Padding(
@@ -933,7 +931,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 SizedBox(
                   height: verticalSpaceRegular,
                 ),
-                GroupTitle(title: 'More from this Collection'),
+                const GroupTitle(title: 'More from this Collection'),
                 Container(
                   padding: EdgeInsets.only(left: 24.w),
                   child: GridView.count(
@@ -943,7 +941,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                     crossAxisSpacing: 0,
                     mainAxisSpacing: verticalSpaceMedium,
                     childAspectRatio: 3 / 4,
-                    children: [
+                    children: const [
                       CommonCard(
                         title: 'Neo Cube#812',
                         price: '6,000',
@@ -1492,13 +1490,13 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
 }
 
 class MoreSingleButton extends StatelessWidget {
-  MoreSingleButton({
+  const MoreSingleButton({
     Key? key,
     required this.title,
     required this.onTap,
   }) : super(key: key);
-  String title;
-  void Function() onTap;
+  final String title;
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -1522,11 +1520,11 @@ class MoreSingleButton extends StatelessWidget {
 }
 
 class AboutCollectionExpanded extends StatelessWidget {
-  AboutCollectionExpanded({
+  const AboutCollectionExpanded({
     Key? key,
     required this.onTap,
   }) : super(key: key);
-  void Function() onTap;
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -1590,11 +1588,11 @@ class AboutCollectionExpanded extends StatelessWidget {
 }
 
 class DetailsExpanded extends StatelessWidget {
-  DetailsExpanded({
+  const DetailsExpanded({
     Key? key,
     required this.onTap,
   }) : super(key: key);
-  void Function() onTap;
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -1815,15 +1813,15 @@ class DetailsExpanded extends StatelessWidget {
                 ],
               ),
             ),
-            DetailsRowSingle(
+            const DetailsRowSingle(
               title: 'Token ID',
               value: '877',
             ),
-            DetailsRowSingle(
+            const DetailsRowSingle(
               title: 'Token Standard',
               value: 'ERC-721',
             ),
-            DetailsRowSingle(
+            const DetailsRowSingle(
               title: 'Blockchain',
               value: 'ETHEREUM',
             ),
@@ -1835,11 +1833,11 @@ class DetailsExpanded extends StatelessWidget {
 }
 
 class AssetPropertiesExpanded extends StatelessWidget {
-  AssetPropertiesExpanded({
+  const AssetPropertiesExpanded({
     Key? key,
     required this.onTap,
   }) : super(key: key);
-  void Function() onTap;
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -1888,35 +1886,35 @@ class AssetPropertiesExpanded extends StatelessWidget {
             SizedBox(
               height: verticalSpaceMedium,
             ),
-            AssetPropertiesRowSingle(
+            const AssetPropertiesRowSingle(
               title: 'Clothes',
               value: 'Work vest',
             ),
-            AssetPropertiesRowSingle(
+            const AssetPropertiesRowSingle(
               title: 'Eyes',
               value: 'Eyepatch',
             ),
-            AssetPropertiesRowSingle(
+            const AssetPropertiesRowSingle(
               title: 'Hat',
               value: 'Sea Captain’s Hat',
             ),
-            AssetPropertiesRowSingle(
+            const AssetPropertiesRowSingle(
               title: 'Background',
               value: 'Purple',
             ),
-            AssetPropertiesRowSingle(
+            const AssetPropertiesRowSingle(
               title: 'Trait Count',
               value: '6',
             ),
-            AssetPropertiesRowSingle(
+            const AssetPropertiesRowSingle(
               title: 'Fur',
               value: 'Tan',
             ),
-            AssetPropertiesRowSingle(
+            const AssetPropertiesRowSingle(
               title: 'Mouth',
               value: 'Bored Unshaven',
             ),
-            AssetPropertiesRowSingle(
+            const AssetPropertiesRowSingle(
               title: 'Earring',
               value: 'None',
             ),
@@ -1928,11 +1926,11 @@ class AssetPropertiesExpanded extends StatelessWidget {
 }
 
 class SalesActivityExpanded extends StatelessWidget {
-  SalesActivityExpanded({
+  const SalesActivityExpanded({
     Key? key,
     required this.onTap,
   }) : super(key: key);
-  void Function() onTap;
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -1971,21 +1969,21 @@ class SalesActivityExpanded extends StatelessWidget {
                 ],
               ),
             ),
-            SalesActivitySingle(
+            const SalesActivitySingle(
               title: 'Sougen Genesis#123',
               byName: '@Sugen_Dad',
               toName: '@Jahari_Official',
               time: '24 minutes ago',
               price: '9,000 SAR',
             ),
-            SalesActivitySingle(
+            const SalesActivitySingle(
               title: 'Sougen Genesis#123',
               byName: '@Sugen_Dad',
               toName: '@Jahari_Official',
               time: '24 minutes ago',
               price: '9,000 SAR',
             ),
-            SalesActivitySingle(
+            const SalesActivitySingle(
               title: 'Sougen Genesis#123',
               byName: '@Sugen_Dad',
               toName: '@Jahari_Official',
@@ -2000,7 +1998,7 @@ class SalesActivityExpanded extends StatelessWidget {
 }
 
 class SalesActivitySingle extends StatelessWidget {
-  SalesActivitySingle({
+  const SalesActivitySingle({
     Key? key,
     required this.title,
     required this.byName,
@@ -2009,7 +2007,7 @@ class SalesActivitySingle extends StatelessWidget {
     required this.time,
   }) : super(key: key);
 
-  String title, byName, toName, price, time;
+  final String title, byName, toName, price, time;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -2107,14 +2105,13 @@ class SalesActivitySingle extends StatelessWidget {
 }
 
 class DetailsRowSingle extends StatelessWidget {
-  DetailsRowSingle({
+  const DetailsRowSingle({
     Key? key,
     required this.title,
     required this.value,
   }) : super(key: key);
 
-  String title;
-  String value;
+  final String title, value;
 
   @override
   Widget build(BuildContext context) {
@@ -2144,14 +2141,13 @@ class DetailsRowSingle extends StatelessWidget {
 }
 
 class AssetPropertiesRowSingle extends StatelessWidget {
-  AssetPropertiesRowSingle({
+  const AssetPropertiesRowSingle({
     Key? key,
     required this.title,
     required this.value,
   }) : super(key: key);
 
-  String title;
-  String value;
+  final String title, value;
 
   @override
   Widget build(BuildContext context) {

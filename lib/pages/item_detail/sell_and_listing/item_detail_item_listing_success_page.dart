@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:neo_nft/controllers/item_sell_controller.dart';
 import 'package:neo_nft/theme.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
-import 'package:neo_nft/widgets/custom_button_border.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 
 class ItemDetailItemListingSuccessPage extends StatefulWidget {
@@ -19,13 +18,13 @@ class ItemDetailItemListingSuccessPage extends StatefulWidget {
 class _ItemDetailItemListingSuccessPageState
     extends State<ItemDetailItemListingSuccessPage> {
   List<Widget> buttonList = [
-    TypeSaleButton(
+    const TypeSaleButton(
       title: 'Fixed Price',
       desc: 'A single digital asset belongs to no specific collection',
       imgSrc: 'assets/icons/icon_fixed_price.png',
       id: 0,
     ),
-    TypeSaleButton(
+    const TypeSaleButton(
       title: 'Timed Auction',
       desc: 'Create a collection of specific digital assets',
       imgSrc: 'assets/icons/icon_timed_auction.png',
@@ -92,17 +91,15 @@ class _ItemDetailItemListingSuccessPageState
                 },
               ),
             ),
-            Container(
-              child: BlurryContainer(
-                blur: 3,
-                elevation: 0,
-                color: blackColor.withOpacity(0.9),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(8.r),
-                  bottomRight: Radius.circular(8.r),
-                ),
-                child: Container(),
+            BlurryContainer(
+              blur: 3,
+              elevation: 0,
+              color: blackColor.withOpacity(0.9),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(8.r),
+                bottomRight: Radius.circular(8.r),
               ),
+              child: Container(),
             ),
             Align(
               alignment: Alignment.center,
@@ -185,7 +182,7 @@ class _ItemDetailItemListingSuccessPageState
 }
 
 class TypeSaleButton extends StatefulWidget {
-  TypeSaleButton({
+  const TypeSaleButton({
     Key? key,
     required this.title,
     required this.desc,
@@ -193,8 +190,8 @@ class TypeSaleButton extends StatefulWidget {
     required this.id,
   }) : super(key: key);
 
-  String title, desc, imgSrc;
-  int id;
+  final String title, desc, imgSrc;
+  final int id;
 
   @override
   State<TypeSaleButton> createState() => _TypeSaleButtonState();

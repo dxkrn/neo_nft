@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -107,7 +109,7 @@ class CollectionBidsPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GroupTitle(title: 'Discovery'),
+                const GroupTitle(title: 'Discovery'),
                 Container(
                   height: 18.w,
                   margin: EdgeInsets.only(
@@ -167,7 +169,7 @@ class CollectionBidsPage extends StatelessWidget {
                 crossAxisSpacing: 0,
                 mainAxisSpacing: verticalSpaceMedium,
                 childAspectRatio: 3 / 4,
-                children: [
+                children: const [
                   CommonCard(
                     title: 'Neo Cube#812',
                     price: '6,000',

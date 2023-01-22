@@ -9,9 +9,9 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:neo_nft/widgets/group_title.dart';
 
 final List<Widget> featuredList = [
-  FeaturedCard(title: 'NEO CUBE', price: '6000'),
-  FeaturedCard(title: 'AZUKI', price: '3000'),
-  FeaturedCard(title: 'LUMEN', price: '4000'),
+  const FeaturedCard(title: 'NEO CUBE', price: '6000'),
+  const FeaturedCard(title: 'AZUKI', price: '3000'),
+  const FeaturedCard(title: 'LUMEN', price: '4000'),
 ];
 
 class MarketExplorer extends StatefulWidget {
@@ -67,7 +67,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
               SizedBox(
                 height: verticalSpaceRegular,
               ),
-              GroupTitle(title: 'Featured'),
+              const GroupTitle(title: 'Featured'),
 
               //NOTE : Featured
               // CarouselSlider(
@@ -135,7 +135,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GroupTitle(title: 'Discovery'),
+                  const GroupTitle(title: 'Discovery'),
                   Container(
                     height: 18.w,
                     margin: EdgeInsets.only(
@@ -153,9 +153,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                               image: AssetImage('assets/icons/icon_search.png'),
                             ),
                           ),
-                          onTap: () {
-                            print('Search Icon Tapped!');
-                          },
+                          onTap: () {},
                         ),
                         SizedBox(
                           width: 16.w,
@@ -169,9 +167,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                                   AssetImage('assets/icons/icon_setting.png'),
                             ),
                           ),
-                          onTap: () {
-                            print('Setting Icon Tapped!');
-                          },
+                          onTap: () {},
                         ),
                         // Text(
                         //   'Search',
@@ -196,15 +192,15 @@ class _MarketExplorerState extends State<MarketExplorer> {
                     SizedBox(
                       width: horizontalSpace,
                     ),
-                    DiscoverCard(
+                    const DiscoverCard(
                       title: 'Art',
                       pageUrl: '/collectionArtPage',
                     ),
-                    DiscoverCard(
+                    const DiscoverCard(
                       title: 'Collectibles',
                       pageUrl: '/collectionCollectiblesPage',
                     ),
-                    DiscoverCard(
+                    const DiscoverCard(
                       title: 'Bids',
                       pageUrl: '/collectionBidsPage',
                     ),
@@ -219,7 +215,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GroupTitle(title: 'Popular'),
+                  const GroupTitle(title: 'Popular'),
                   Container(
                     height: 18.w,
                     margin: EdgeInsets.only(
@@ -237,9 +233,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                               fontSize: 12.sp,
                             ),
                           ),
-                          onTap: () {
-                            print('View more Tapped!');
-                          },
+                          onTap: () {},
                         ),
                       ],
                     ),
@@ -255,25 +249,25 @@ class _MarketExplorerState extends State<MarketExplorer> {
                     SizedBox(
                       width: horizontalSpace,
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
                       pageName: '/itemDetail',
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
                       pageName: '/itemDetail',
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
                       pageName: '/itemDetail',
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
@@ -287,7 +281,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
               ),
 
               //NOTE : Top Seller
-              GroupTitle(title: 'Top Seller'),
+              const GroupTitle(title: 'Top Seller'),
               SizedBox(
                 width: deviceWidth,
                 height: 144.h,
@@ -300,7 +294,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         TopSellerCard(
                           title: 'AZUKI',
                           percent: 556.49,
@@ -313,7 +307,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         TopSellerCard(
                           title: 'Meta-morphic fdsf dsf',
                           percent: 556.49,
@@ -332,7 +326,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
               ),
 
               //NOTE : Trending
-              GroupTitle(title: 'Trending'),
+              const GroupTitle(title: 'Trending'),
               SizedBox(
                 height: 200.h,
                 child: ListView(
@@ -342,25 +336,25 @@ class _MarketExplorerState extends State<MarketExplorer> {
                     SizedBox(
                       width: horizontalSpace,
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
                       pageName: '/itemDetail',
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
                       pageName: '/itemDetail',
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
                       pageName: '/itemDetail',
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
@@ -374,7 +368,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
               ),
 
               //NOTE : New
-              GroupTitle(title: 'New'),
+              const GroupTitle(title: 'New'),
               SizedBox(
                 height: 200.h,
                 child: ListView(
@@ -384,25 +378,25 @@ class _MarketExplorerState extends State<MarketExplorer> {
                     SizedBox(
                       width: horizontalSpace,
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
                       pageName: '/itemDetail',
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
                       pageName: '/itemDetail',
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
                       pageName: '/itemDetail',
                     ),
-                    CommonCard(
+                    const CommonCard(
                       title: 'Neo Cube#812',
                       price: '6000',
                       favCount: 12,
@@ -424,15 +418,13 @@ class _MarketExplorerState extends State<MarketExplorer> {
 }
 
 class FeaturedCard extends StatelessWidget {
-  FeaturedCard({
+  const FeaturedCard({
     Key? key,
     required this.title,
     required this.price,
     this.imgSrc = 'assets/images/market_explorer/img_featured.png',
   }) : super(key: key);
-  String title;
-  String price;
-  String imgSrc;
+  final String title, price, imgSrc;
 
   @override
   Widget build(BuildContext context) {
@@ -522,13 +514,13 @@ class FeaturedCard extends StatelessWidget {
 }
 
 class TopSellerCard extends StatelessWidget {
-  TopSellerCard({
+  const TopSellerCard({
     Key? key,
     required this.title,
     required this.percent,
   }) : super(key: key);
-  String title;
-  double percent;
+  final String title;
+  final double percent;
 
   @override
   Widget build(BuildContext context) {
@@ -635,12 +627,12 @@ class TopSellerCard extends StatelessWidget {
 }
 
 class DiscoverCard extends StatelessWidget {
-  DiscoverCard({
+  const DiscoverCard({
     Key? key,
     required this.title,
     required this.pageUrl,
   }) : super(key: key);
-  String title, pageUrl;
+  final String title, pageUrl;
   @override
   Widget build(BuildContext context) {
     return Row(

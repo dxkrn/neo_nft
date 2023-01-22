@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CustomScaffoldBody extends StatelessWidget {
-  CustomScaffoldBody({
+  const CustomScaffoldBody({
     Key? key,
     required this.child,
   }) : super(key: key);
 
-  Widget child;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
