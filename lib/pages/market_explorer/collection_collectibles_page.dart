@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/theme.dart';
 import 'package:neo_nft/widgets/collection_card.dart';
-import 'package:neo_nft/widgets/common_card.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 import 'package:neo_nft/widgets/group_title.dart';
 
@@ -96,9 +95,7 @@ class CollectionCollectiblesPage extends StatelessWidget {
                       'Read more',
                       style: semiBoldTextStyle,
                     ),
-                    onTap: () {
-                      print('read more tapped!');
-                    },
+                    onTap: () {},
                   ),
                 ],
               ),
@@ -108,7 +105,7 @@ class CollectionCollectiblesPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GroupTitle(title: 'Discovery'),
+                const GroupTitle(title: 'Discovery'),
                 Container(
                   height: 18.w,
                   margin: EdgeInsets.only(
@@ -126,9 +123,7 @@ class CollectionCollectiblesPage extends StatelessWidget {
                             image: AssetImage('assets/icons/icon_search.png'),
                           ),
                         ),
-                        onTap: () {
-                          print('Search Icon Tapped!');
-                        },
+                        onTap: () {},
                       ),
                       SizedBox(
                         width: 16.w,
@@ -141,9 +136,7 @@ class CollectionCollectiblesPage extends StatelessWidget {
                             image: AssetImage('assets/icons/icon_setting.png'),
                           ),
                         ),
-                        onTap: () {
-                          print('Setting Icon Tapped!');
-                        },
+                        onTap: () {},
                       ),
                       // Text(
                       //   'Search',
@@ -168,7 +161,7 @@ class CollectionCollectiblesPage extends StatelessWidget {
                 crossAxisSpacing: 0,
                 mainAxisSpacing: verticalSpaceMedium,
                 childAspectRatio: 3 / 4,
-                children: [
+                children: const [
                   CollectionCard(
                     title: 'Cube Collection',
                     imgSrc: 'assets/images/market_explorer/img_collection.png',

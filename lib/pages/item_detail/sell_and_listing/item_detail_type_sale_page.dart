@@ -15,7 +15,7 @@ class ItemDetailTypeSalePage extends StatefulWidget {
 }
 
 class _ItemDetailTypeSalePageState extends State<ItemDetailTypeSalePage> {
-  List<Widget> buttonList = [
+  List<Widget> buttonList = const [
     TypeSaleButton(
       title: 'Fixed Price',
       desc: 'A single digital asset belongs to no specific collection',
@@ -97,7 +97,7 @@ class _ItemDetailTypeSalePageState extends State<ItemDetailTypeSalePage> {
 }
 
 class TypeSaleButton extends StatefulWidget {
-  TypeSaleButton({
+  const TypeSaleButton({
     Key? key,
     required this.title,
     required this.desc,
@@ -105,8 +105,8 @@ class TypeSaleButton extends StatefulWidget {
     required this.id,
   }) : super(key: key);
 
-  String title, desc, imgSrc;
-  int id;
+  final String title, desc, imgSrc;
+  final int id;
 
   @override
   State<TypeSaleButton> createState() => _TypeSaleButtonState();

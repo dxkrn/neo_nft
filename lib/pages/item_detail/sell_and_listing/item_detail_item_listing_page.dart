@@ -18,13 +18,13 @@ class ItemDetailItemListingPage extends StatefulWidget {
 
 class _ItemDetailItemListingPageState extends State<ItemDetailItemListingPage> {
   List<Widget> buttonList = [
-    TypeSaleButton(
+    const TypeSaleButton(
       title: 'Fixed Price',
       desc: 'A single digital asset belongs to no specific collection',
       imgSrc: 'assets/icons/icon_fixed_price.png',
       id: 0,
     ),
-    TypeSaleButton(
+    const TypeSaleButton(
       title: 'Timed Auction',
       desc: 'Create a collection of specific digital assets',
       imgSrc: 'assets/icons/icon_timed_auction.png',
@@ -318,10 +318,7 @@ class _ItemDetailItemListingPageState extends State<ItemDetailItemListingPage> {
                                                           image: AssetImage(
                                                               'assets/icons/icon_copy.png')),
                                                     ),
-                                                    onTap: () {
-                                                      print(
-                                                          'Icon Copy tapped!');
-                                                    },
+                                                    onTap: () {},
                                                   ),
                                                 ],
                                               ),
@@ -378,7 +375,7 @@ class _ItemDetailItemListingPageState extends State<ItemDetailItemListingPage> {
 }
 
 class TypeSaleButton extends StatefulWidget {
-  TypeSaleButton({
+  const TypeSaleButton({
     Key? key,
     required this.title,
     required this.desc,
@@ -386,8 +383,8 @@ class TypeSaleButton extends StatefulWidget {
     required this.id,
   }) : super(key: key);
 
-  String title, desc, imgSrc;
-  int id;
+  final String title, desc, imgSrc;
+  final int id;
 
   @override
   State<TypeSaleButton> createState() => _TypeSaleButtonState();

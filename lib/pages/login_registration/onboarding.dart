@@ -73,7 +73,6 @@ class Onboarding extends StatelessWidget {
                         height: 48.w,
                         text: 'Create an account',
                         onTap: () {
-                          print('tapped');
                           Get.toNamed('/signupPage');
                         },
                       ),
@@ -85,7 +84,6 @@ class Onboarding extends StatelessWidget {
                         height: 48.w,
                         text: 'I already have an account',
                         onTap: () {
-                          print('tapped');
                           Get.toNamed('/signinPage');
                         },
                       ),

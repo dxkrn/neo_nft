@@ -5,13 +5,13 @@ import 'package:neo_nft/controllers/signup_controller.dart';
 import 'package:neo_nft/theme.dart';
 
 class CustomPasswordTextField extends StatefulWidget {
-  CustomPasswordTextField({
+  const CustomPasswordTextField({
     Key? key,
     required this.title,
     required this.hint,
   }) : super(key: key);
 
-  String title, hint;
+  final String title, hint;
 
   @override
   State<CustomPasswordTextField> createState() =>
@@ -105,13 +105,13 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
 }
 
 class CustomConfirmPasswordTextField extends StatefulWidget {
-  CustomConfirmPasswordTextField({
+  const CustomConfirmPasswordTextField({
     Key? key,
     required this.title,
     required this.hint,
   }) : super(key: key);
 
-  String title, hint;
+  final String title, hint;
 
   @override
   State<CustomConfirmPasswordTextField> createState() =>

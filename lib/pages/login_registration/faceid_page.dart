@@ -1,12 +1,9 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/theme.dart';
 import 'package:neo_nft/widgets/custom_appbar.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
-import 'package:neo_nft/widgets/custom_button_border_with_icon.dart';
-import 'package:neo_nft/widgets/custom_text_field.dart';
 import 'package:neo_nft/widgets/login_signup_background.dart';
 
 class FaceIDPage extends StatelessWidget {
@@ -34,7 +31,7 @@ class FaceIDPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SizedBox(),
+                      const SizedBox(),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

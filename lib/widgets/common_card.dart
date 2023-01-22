@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:neo_nft/theme.dart';
 
 class CommonCard extends StatelessWidget {
-  CommonCard({
+  const CommonCard({
     Key? key,
     required this.title,
     required this.price,
@@ -13,11 +13,9 @@ class CommonCard extends StatelessWidget {
     required this.pageName,
     this.rightSpacing = true,
   }) : super(key: key);
-  String title;
-  String price;
-  int favCount;
-  String pageName;
-  bool rightSpacing;
+  final String title, price, pageName;
+  final int favCount;
+  final bool rightSpacing;
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -3,15 +3,15 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Color purpleColor = Color(0xff9A00DF);
-Color whiteColor = Color(0xffFFFFFF);
-Color blackColor = Color(0x000000);
-Color redColor = Color(0xffFA0848);
-Color cyanColor = Color(0xff00FFF6);
-Color blueColor = Color(0xff2065D6);
-Color greyColor = Color(0xff7F7F7F);
-Color greenColor = Color(0xff009E3D);
-Color blurryBGColor = Color(0xff0D0013).withOpacity(0.9);
+Color purpleColor = const Color(0xff9A00DF);
+Color whiteColor = const Color(0xffFFFFFF);
+Color blackColor = const Color(0x00000000);
+Color redColor = const Color(0xffFA0848);
+Color cyanColor = const Color(0xff00FFF6);
+Color blueColor = const Color(0xff2065D6);
+Color greyColor = const Color(0xff7F7F7F);
+Color greenColor = const Color(0xff009E3D);
+Color blurryBGColor = const Color(0xff0D0013).withOpacity(0.9);
 
 TextStyle clashDisplayBoldTextStyle = TextStyle(
   fontFamily: 'ClashDisplay',

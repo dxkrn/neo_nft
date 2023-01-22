@@ -68,12 +68,12 @@ class AddCardPage extends StatelessWidget {
                         SizedBox(
                           height: verticalSpaceRegular,
                         ),
-                        CustomTextField(
+                        const CustomTextField(
                           title: 'Card Number',
                           hint: 'Enter card number...',
                           isNumber: true,
                         ),
-                        CustomTextField(
+                        const CustomTextField(
                           title: 'Name on Card',
                           hint: 'Enter name on card...',
                         ),
