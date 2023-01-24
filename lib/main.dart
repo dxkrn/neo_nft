@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:neo_nft/pages/collection/collection_details_item_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_no_collection_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_purchasement_failed_page.dart';
@@ -278,6 +279,16 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/itemDetailListingFailedPage',
             page: () => const ItemDetailItemListingFailedPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+
+          //NOTE: Collection
+          GetPage(
+            name: '/collectionDetailItem',
+            page: () => const CollectionDetailsItemPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,

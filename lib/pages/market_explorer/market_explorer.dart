@@ -49,6 +49,13 @@ class _MarketExplorerState extends State<MarketExplorer> {
                         image: AssetImage('assets/images/img_logo_small.png'),
                       ),
                     ),
+
+                    ElevatedButton(
+                      child: const Text('CollectionDetailItem'),
+                      onPressed: () {
+                        Get.toNamed('/collectionDetailItem');
+                      },
+                    ),
                     // IconButton(
                     //   onPressed: () {
                     //     print('Notif: tapped');
