@@ -50,12 +50,6 @@ class _MarketExplorerState extends State<MarketExplorer> {
                       ),
                     ),
 
-                    ElevatedButton(
-                      child: const Text('CollectionDetailItem'),
-                      onPressed: () {
-                        Get.toNamed('/collectionDetailItem');
-                      },
-                    ),
                     // IconButton(
                     //   onPressed: () {
                     //     print('Notif: tapped');
@@ -70,6 +64,25 @@ class _MarketExplorerState extends State<MarketExplorer> {
                     // ),
                   ],
                 ),
+              ),
+              Row(
+                children: [
+                  ElevatedButton(
+                    child: const Text('CollectionDetailItem'),
+                    onPressed: () {
+                      Get.toNamed('/collectionDetailItem');
+                    },
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  ElevatedButton(
+                    child: const Text('UserProfile'),
+                    onPressed: () {
+                      Get.toNamed('/userProfilePage');
+                    },
+                  ),
+                ],
               ),
               SizedBox(
                 height: verticalSpaceRegular,

@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Color purpleColor = const Color(0xff9A00DF);
 Color whiteColor = const Color(0xffFFFFFF);
-Color blackColor = const Color(0x00000000);
+Color blackColor = const Color(0xff000000);
 Color redColor = const Color(0xffFA0848);
 Color cyanColor = const Color(0xff00FFF6);
 Color blueColor = const Color(0xff2065D6);
