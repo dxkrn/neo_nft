@@ -130,7 +130,7 @@ class _UserProfilePagePageState extends State<UserProfilePage> {
                                               BorderRadius.circular(8.r),
                                           child: Container(
                                             width: 220.w,
-                                            height: 128.w,
+                                            height: 155.w,
                                             padding: EdgeInsets.all(8.w),
                                             decoration: BoxDecoration(
                                               border: Border.all(
@@ -146,32 +146,19 @@ class _UserProfilePagePageState extends State<UserProfilePage> {
                                                       .spaceBetween,
                                               children: [
                                                 MoreSingleButton(
+                                                  title: 'Wallet',
+                                                  onTap: () {},
+                                                ),
+                                                MoreSingleButton(
                                                   title: 'Edit',
                                                   onTap: () {},
                                                 ),
-                                                GestureDetector(
-                                                  onTap: () {},
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 64.w,
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal: 8.w),
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    decoration: BoxDecoration(
-                                                      border: Border.all(
-                                                          width: 1,
-                                                          color: whiteColor),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.r),
-                                                    ),
-                                                    child: Text(
-                                                      'View on Blockchain Explorer',
-                                                      style: semiBoldTextStyle,
-                                                    ),
-                                                  ),
+                                                MoreSingleButton(
+                                                  title: 'Settings',
+                                                  onTap: () {
+                                                    Get.toNamed(
+                                                        '/userSettingsPage');
+                                                  },
                                                 ),
                                               ],
                                             ),
