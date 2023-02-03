@@ -158,20 +158,32 @@ class _SignupWithEmailPageState extends State<SignupWithEmailPage> {
                             SizedBox(
                               height: 60.h,
                             ),
-                            CustomButton(
-                              width: deviceWidth - 48.w,
-                              height: 48.w,
-                              text: 'Create account',
-                              onTap: () {
-                                Get.toNamed('/faceIDPage');
-                              },
-                            ),
+                            // CustomButton(
+                            //   width: deviceWidth - 48.w,
+                            //   height: 48.w,
+                            //   text: 'Create account',
+                            //   onTap: () {
+                            //     Get.toNamed('/faceIDPage');
+                            //   },
+                            // ),
                           ],
                         ),
                       ],
                     ),
                   ],
                 ),
+              ),
+            ),
+            Positioned(
+              bottom: 16.w,
+              left: 24.w,
+              child: CustomButton(
+                width: deviceWidth - 48.w,
+                height: 48.w,
+                text: 'Create account',
+                onTap: () {
+                  Get.toNamed('/faceIDPage');
+                },
               ),
             ),
           ],

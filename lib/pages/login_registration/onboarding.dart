@@ -30,7 +30,7 @@ class Onboarding extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                        height: 110.h,
+                        height: 70.w,
                       ),
                       SizedBox(
                         width: 262.w,
@@ -40,7 +40,7 @@ class Onboarding extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 110.h,
+                        height: 70.w,
                       ),
                       SizedBox(
                         width: 327.w,
