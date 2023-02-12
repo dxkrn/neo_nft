@@ -727,7 +727,10 @@ class _ItemDetailPurchasementFailedPage
                               width: double.infinity,
                               height: 48.w,
                               text: 'Try Again',
-                              onTap: () {},
+                              onTap: () {
+                                Get.toNamed(
+                                    '/itemDetailPurchasementSuccessPage');
+                              },
                             ),
                             SizedBox(
                               height: verticalSpaceMedium,

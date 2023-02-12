@@ -165,7 +165,9 @@ class _ItemDetailItemListingFailedPageState
                               width: double.infinity,
                               height: 48.w,
                               text: 'Try Again',
-                              onTap: () {},
+                              onTap: () {
+                                Get.toNamed('/itemDetailListingSuccessPage');
+                              },
                             ),
                             SizedBox(
                               height: verticalSpaceMedium,
@@ -174,7 +176,9 @@ class _ItemDetailItemListingFailedPageState
                               width: double.infinity,
                               height: 48.w,
                               text: 'Cancel',
-                              onTap: () {},
+                              onTap: () {
+                                Get.back();
+                              },
                             )
                           ],
                         ),

@@ -164,7 +164,9 @@ class _ItemDetailItemListingSuccessPageState
                               width: double.infinity,
                               height: 48.w,
                               text: 'View Listing',
-                              onTap: () {},
+                              onTap: () {
+                                Get.toNamed('/marketExplorer');
+                              },
                             ),
                           ],
                         ),

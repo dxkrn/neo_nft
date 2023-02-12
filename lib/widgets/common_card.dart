@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/theme.dart';
 
-class CommonCard extends StatelessWidget {
+class CommonCard extends StatefulWidget {
   const CommonCard({
     Key? key,
     required this.title,
@@ -16,50 +16,60 @@ class CommonCard extends StatelessWidget {
   final String title, price, pageName;
   final int favCount;
   final bool rightSpacing;
+
+  @override
+  State<CommonCard> createState() => _CommonCardState();
+}
+
+class _CommonCardState extends State<CommonCard> {
+  bool loved = false;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        GestureDetector(
-          onTap: () {
-            Get.toNamed(pageName);
-          },
-          child: Container(
-            // width: 155.h,
-            // height: 200.h,
-            width: (deviceWidth - 48.w) / 2,
-            height: 4 / 3 * ((deviceWidth - 48.w) / 2),
-            decoration: BoxDecoration(
-              // color: whiteColor,
-              borderRadius: BorderRadius.circular(8.r),
-              image: const DecorationImage(
-                image: AssetImage(
-                  'assets/images/market_explorer/img_popular.png',
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                BlurryContainer(
-                  blur: 3,
-                  elevation: 0,
-                  color: blackColor.withOpacity(0.3),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(8.r),
-                    bottomRight: Radius.circular(8.r),
+        SizedBox(
+          width: (deviceWidth - 48.w) / 2,
+          height: 4 / 3 * ((deviceWidth - 48.w) / 2),
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              GestureDetector(
+                onTap: () => {Get.toNamed(widget.pageName)},
+                child: Container(
+                  // width: 155.h,
+                  height: 4 / 3 * ((deviceWidth - 48.w) / 2),
+
+                  decoration: BoxDecoration(
+                    // color: whiteColor,
+                    borderRadius: BorderRadius.circular(8.r),
+                    image: const DecorationImage(
+                      image: AssetImage(
+                        'assets/images/market_explorer/img_popular.png',
+                      ),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  child: SizedBox(
-                    width: 155.h,
-                    height: 40.h,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        SizedBox(
+                ),
+              ),
+              BlurryContainer(
+                blur: 3,
+                elevation: 0,
+                color: blackColor.withOpacity(0.3),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(8.r),
+                  bottomRight: Radius.circular(8.r),
+                ),
+                child: SizedBox(
+                  height: 40.h,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      GestureDetector(
+                        child: SizedBox(
                           width: 155.h,
                           child: Text(
-                            title,
+                            widget.title,
                             style: clashDisplayBoldTextStyle.copyWith(
                               fontSize: 14.sp,
                             ),
@@ -67,25 +77,32 @@ class CommonCard extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        SizedBox(
-                          width: 155.h,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                '$price SAR',
-                                style: mediumTextStyle.copyWith(
-                                  fontSize: 12.sp,
-                                ),
+                        onTap: () => {Get.toNamed(widget.pageName)},
+                      ),
+                      SizedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '${widget.price} SAR',
+                              style: mediumTextStyle.copyWith(
+                                fontSize: 12.sp,
                               ),
-                              Row(
+                            ),
+                            GestureDetector(
+                              onTap: () => setState(() {
+                                loved = !loved;
+                              }),
+                              child: Row(
                                 children: [
                                   SizedBox(
                                     width: 12.h,
                                     height: 12.h,
-                                    child: const Image(
+                                    child: Image(
                                       image: AssetImage(
-                                        'assets/icons/icon_fav.png',
+                                        loved
+                                            ? 'assets/icons/icon_fav_alt.png'
+                                            : 'assets/icons/icon_fav.png',
                                       ),
                                     ),
                                   ),
@@ -93,26 +110,26 @@ class CommonCard extends StatelessWidget {
                                     width: 2.h,
                                   ),
                                   Text(
-                                    '$favCount',
+                                    '${widget.favCount}',
                                     style: mediumTextStyle.copyWith(
-                                      fontSize: 8.sp,
-                                    ),
+                                        fontSize: 8.sp,
+                                        color: loved ? redColor : null),
                                   )
                                 ],
-                              )
-                            ],
-                          ),
+                              ),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         SizedBox(
-          width: rightSpacing ? 16.w : 0,
+          width: widget.rightSpacing ? 16.w : 0,
         ),
       ],
     );

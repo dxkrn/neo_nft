@@ -127,6 +127,13 @@ class _ItemDetailSaleInfoPageState extends State<ItemDetailSaleInfoPage> {
                               color: whiteColor.withOpacity(0.2),
                             ),
                             hintText: 'Enter duration',
+                            // hint text padding
+                            contentPadding: EdgeInsets.only(
+                              left: 16.w,
+                              right: 16.w,
+                              top: 16.w,
+                              bottom: 16.w,
+                            ),
                             prefixIcon: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
