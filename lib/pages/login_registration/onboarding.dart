@@ -24,21 +24,19 @@ class Onboarding extends StatelessWidget {
               ),
             ),
             Center(
-              child: ListView(
-                physics: const BouncingScrollPhysics(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Expanded(
+                      child: SizedBox(
+                    width: 262.w,
+                    height: 146.w,
+                    child: const Image(
+                      image: AssetImage('assets/images/img_logo.png'),
+                    ),
+                  )),
                   Column(
                     children: [
-                      SizedBox(
-                        height: 110.h,
-                      ),
-                      SizedBox(
-                        width: 262.w,
-                        height: 146.w,
-                        child: const Image(
-                          image: AssetImage('assets/images/img_logo.png'),
-                        ),
-                      ),
                       SizedBox(
                         height: 110.h,
                       ),
