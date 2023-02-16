@@ -151,7 +151,10 @@ class _UserProfilePagePageState extends State<UserProfilePage> {
                                                 ),
                                                 MoreSingleButton(
                                                   title: 'Edit',
-                                                  onTap: () {},
+                                                  onTap: () {
+                                                    Get.toNamed(
+                                                        '/userEditPage');
+                                                  },
                                                 ),
                                                 MoreSingleButton(
                                                   title: 'Settings',
