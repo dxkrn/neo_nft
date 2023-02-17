@@ -65,22 +65,38 @@ class _MarketExplorerState extends State<MarketExplorer> {
                   ],
                 ),
               ),
-              Row(
+
+              //NOTE: Tombol Sementara
+              Column(
                 children: [
-                  ElevatedButton(
-                    child: const Text('CollectionDetailItem'),
-                    onPressed: () {
-                      Get.toNamed('/collectionDetailItem');
-                    },
+                  Row(
+                    children: [
+                      ElevatedButton(
+                        child: const Text('CollectionDetailItem'),
+                        onPressed: () {
+                          Get.toNamed('/collectionDetailItem');
+                        },
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      ElevatedButton(
+                        child: const Text('UserProfile'),
+                        onPressed: () {
+                          Get.toNamed('/userProfilePage');
+                        },
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  ElevatedButton(
-                    child: const Text('UserProfile'),
-                    onPressed: () {
-                      Get.toNamed('/userProfilePage');
-                    },
+                  Row(
+                    children: [
+                      ElevatedButton(
+                        child: const Text('Start Minting'),
+                        onPressed: () {
+                          Get.toNamed('/mintCategoryPage');
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
