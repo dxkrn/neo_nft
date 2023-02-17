@@ -6,7 +6,6 @@ import 'package:neo_nft/widgets/custom_appbar.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
 import 'package:neo_nft/widgets/custom_file_input_field.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
-import 'package:neo_nft/widgets/custom_text_field.dart';
 
 class MintNftFilePage extends StatefulWidget {
   const MintNftFilePage({super.key});
