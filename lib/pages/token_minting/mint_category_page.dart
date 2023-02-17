@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:neo_nft/controllers/item_sell_controller.dart';
+import 'package:neo_nft/controllers/minting_controller.dart';
 import 'package:neo_nft/theme.dart';
 import 'package:neo_nft/widgets/custom_appbar.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
@@ -85,7 +85,7 @@ class _MintCategoryPageState extends State<MintCategoryPage> {
                 height: 48.w,
                 text: 'Continue',
                 onTap: () {
-                  Get.toNamed('/itemDetailSaleInfoPage');
+                  Get.toNamed('/mintTypePage');
                 },
               ),
             ),
@@ -114,14 +114,14 @@ class MintCategoryButton extends StatefulWidget {
 
 class _MintCategoryButtonState extends State<MintCategoryButton> {
   //NOTE: Controller
-  final ItemTypeSaleController itemTypeSaleController =
-      Get.put(ItemTypeSaleController());
+  final MintCategorytController mintCategoryController =
+      Get.put(MintCategorytController());
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        itemTypeSaleController.selectedButton.value = widget.id;
+        mintCategoryController.selectedButton.value = widget.id;
       },
       child: Obx(
         () => Container(
@@ -132,7 +132,7 @@ class _MintCategoryButtonState extends State<MintCategoryButton> {
             borderRadius: BorderRadius.circular(8.r),
             border: Border.all(
               width: 1,
-              color: widget.id != itemTypeSaleController.selectedButton.value
+              color: widget.id != mintCategoryController.selectedButton.value
                   ? whiteColor.withOpacity(0.7)
                   : cyanColor,
             ),
