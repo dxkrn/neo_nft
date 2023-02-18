@@ -28,6 +28,7 @@ import 'package:neo_nft/pages/market_explorer/collection_collectibles_page.dart'
 import 'package:neo_nft/pages/market_explorer/market_explorer.dart';
 import 'package:neo_nft/pages/token_minting/mint_category_page.dart';
 import 'package:neo_nft/pages/token_minting/mint_collection_page.dart';
+import 'package:neo_nft/pages/token_minting/mint_information_page.dart';
 import 'package:neo_nft/pages/token_minting/mint_nft_details_page.dart';
 import 'package:neo_nft/pages/token_minting/mint_nft_file_page.dart';
 import 'package:neo_nft/pages/token_minting/mint_type_page%20copy.dart';
@@ -365,6 +366,14 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/mintCollectionPage',
             page: () => const MintCollectionPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+          GetPage(
+            name: '/mintInformationPage',
+            page: () => const MintInformationPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,
