@@ -1,26 +1,25 @@
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/theme.dart';
-import 'package:neo_nft/widgets/custom_appbar.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 import 'package:neo_nft/widgets/custom_text_field.dart';
 
-class MintInformationPage extends StatefulWidget {
-  const MintInformationPage({super.key});
+class MintSuccessPage extends StatefulWidget {
+  const MintSuccessPage({super.key});
 
   @override
-  State<MintInformationPage> createState() => _MintInformationPageState();
+  State<MintSuccessPage> createState() => _MintSuccessPageState();
 }
 
-class _MintInformationPageState extends State<MintInformationPage> {
+class _MintSuccessPageState extends State<MintSuccessPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      appBar: CustomAppbar('Start Minting'),
       body: CustomScaffoldBody(
         child: Stack(
           children: [
@@ -177,8 +176,93 @@ class _MintInformationPageState extends State<MintInformationPage> {
                 height: 48.w,
                 text: 'Continue',
                 onTap: () {
-                  Get.toNamed('/mintSuccessPage');
+                  Get.toNamed('/mintCategoryPage');
                 },
+              ),
+            ),
+            BlurryContainer(
+              blur: 3,
+              elevation: 0,
+              color: blackColor.withOpacity(0.9),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(8.r),
+                bottomRight: Radius.circular(8.r),
+              ),
+              child: Container(),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                width: 330.w,
+                height: 300.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16.r),
+                  border: Border.all(
+                    width: 1,
+                    color: whiteColor.withOpacity(0.2),
+                  ),
+                ),
+                child: BlurryContainer(
+                  blur: 5,
+                  elevation: 0,
+                  color: whiteColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(16.r),
+                  child: Padding(
+                    padding: EdgeInsets.all(24.w),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 64.w,
+                              height: 64.w,
+                              child: const Image(
+                                image: AssetImage(
+                                    'assets/icons/icon_mint_success.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 24.w,
+                            ),
+                            Text(
+                              'Mint Success',
+                              style: clashDisplayBoldTextStyle.copyWith(
+                                fontSize: 24.sp,
+                                color: whiteColor,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: verticalSpaceSmall,
+                            ),
+                            Text(
+                              'Lorem ipsum dolor sit amet, consec adipiscing elit ultrices arcu.',
+                              style: regularTextStyle.copyWith(
+                                fontSize: 14.sp,
+                                color: whiteColor.withOpacity(0.7),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            CustomButton(
+                              width: double.infinity,
+                              height: 48.w,
+                              text: 'Done',
+                              onTap: () {
+                                Get.toNamed('mintCategoryPage');
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
