@@ -18,32 +18,32 @@ class _MintTypePageState extends State<MintTypePage> {
   List<Widget> buttonList = const [
     MintTypeButton(
       title: 'Digital Art',
-      imgSrc: 'assets/icons/icon_fixed_price.png',
+      imgSrc: 'assets/icons/icon_type_digital_art.png',
       id: 0,
     ),
     MintTypeButton(
       title: 'Poems',
-      imgSrc: 'assets/icons/icon_timed_auction.png',
+      imgSrc: 'assets/icons/icon_type_poems.png',
       id: 1,
     ),
     MintTypeButton(
       title: 'Music',
-      imgSrc: 'assets/icons/icon_fixed_price.png',
+      imgSrc: 'assets/icons/icon_type_music.png',
       id: 2,
     ),
     MintTypeButton(
       title: 'Stickers',
-      imgSrc: 'assets/icons/icon_timed_auction.png',
+      imgSrc: 'assets/icons/icon_type_stickers.png',
       id: 3,
     ),
     MintTypeButton(
       title: 'Gifs',
-      imgSrc: 'assets/icons/icon_fixed_price.png',
+      imgSrc: 'assets/icons/icon_type_gifs.png',
       id: 4,
     ),
     MintTypeButton(
       title: 'Images',
-      imgSrc: 'assets/icons/icon_timed_auction.png',
+      imgSrc: 'assets/icons/icon_type_images.png',
       id: 5,
     ),
   ];
@@ -90,7 +90,10 @@ class _MintTypePageState extends State<MintTypePage> {
                         ),
                         Column(
                           children: buttonList,
-                        )
+                        ),
+                        SizedBox(
+                          height: 50.w,
+                        ),
                       ],
                     ),
                   ),
