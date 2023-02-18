@@ -7,6 +7,10 @@ import 'package:neo_nft/widgets/custom_appbar.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
 
+//NOTE: Controller
+final MintCategorytController mintCategoryController =
+    Get.put(MintCategorytController());
+
 class MintCategoryPage extends StatefulWidget {
   const MintCategoryPage({super.key});
 
@@ -85,7 +89,11 @@ class _MintCategoryPageState extends State<MintCategoryPage> {
                 height: 48.w,
                 text: 'Continue',
                 onTap: () {
-                  Get.toNamed('/mintTypePage');
+                  if (mintCategoryController.selectedButton.value == 0) {
+                    Get.toNamed('/mintTypePage');
+                  } else {
+                    Get.toNamed('/mintCollectionDetailsPage');
+                  }
                 },
               ),
             ),
@@ -113,9 +121,9 @@ class MintCategoryButton extends StatefulWidget {
 }
 
 class _MintCategoryButtonState extends State<MintCategoryButton> {
-  //NOTE: Controller
-  final MintCategorytController mintCategoryController =
-      Get.put(MintCategorytController());
+  // //NOTE: Controller
+  // final MintCategorytController mintCategoryController =
+  //     Get.put(MintCategorytController());
 
   @override
   Widget build(BuildContext context) {
