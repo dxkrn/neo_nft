@@ -1,11 +1,12 @@
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neo_nft/theme.dart';
 import 'package:neo_nft/widgets/custom_appbar.dart';
 import 'package:neo_nft/widgets/custom_button.dart';
-import 'package:neo_nft/widgets/custom_file_input_field.dart';
 import 'package:neo_nft/widgets/custom_scaffold_body.dart';
+import 'package:neo_nft/widgets/custom_text_field.dart';
 
 class MintCollectionPage extends StatefulWidget {
   const MintCollectionPage({super.key});
@@ -112,7 +113,12 @@ class _MintCollectionPageState extends State<MintCollectionPage> {
                                   fontSize: 24.sp),
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Get.dialog(
+                                  barrierColor: Colors.transparent,
+                                  const AddPropertiesForm(),
+                                );
+                              },
                               child: Row(
                                 children: [
                                   SizedBox(
@@ -161,13 +167,137 @@ class _MintCollectionPageState extends State<MintCollectionPage> {
                 height: 48.w,
                 text: 'Continue',
                 onTap: () {
-                  Get.toNamed('/mintAddPropertiesPage');
+                  Get.toNamed('/mintInformationPage');
                 },
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class AddPropertiesForm extends StatelessWidget {
+  const AddPropertiesForm({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: BlurryContainer(
+            blur: 3,
+            elevation: 0,
+            color: blackColor.withOpacity(0.9),
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(8.r),
+              bottomRight: Radius.circular(8.r),
+            ),
+            child: Container(),
+          ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Container(
+            width: 330.w,
+            height: 470.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.r),
+              border: Border.all(
+                width: 1,
+                color: whiteColor.withOpacity(0.2),
+              ),
+            ),
+            child: BlurryContainer(
+              blur: 5,
+              elevation: 0,
+              color: whiteColor.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(16.r),
+              child: Padding(
+                padding: EdgeInsets.all(24.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Add Properties',
+                          style: clashDisplayBoldTextStyle.copyWith(
+                              fontSize: 24.sp),
+                        ),
+                        SizedBox(
+                          height: verticalSpaceSmall,
+                        ),
+                        Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices arcu.',
+                          style: regularTextStyle.copyWith(
+                            color: whiteColor.withOpacity(0.7),
+                          ),
+                        ),
+                        SizedBox(
+                          height: verticalSpaceRegular,
+                        ),
+                        const CustomTextField(
+                          title: 'Type',
+                          hint: 'Character',
+                        ),
+                        const CustomTextField(
+                          title: 'Name',
+                          hint: 'Male',
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 16.w,
+                              height: 16.w,
+                              child: const Image(
+                                image: AssetImage(
+                                    'assets/icons/icon_add_circle.png'),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 8.w,
+                            ),
+                            Text(
+                              'Add more',
+                              style: regularTextStyle.copyWith(
+                                color: whiteColor.withOpacity(0.5),
+                                fontSize: 12.sp,
+                              ),
+                            ),
+                            SizedBox(
+                              height: verticalSpaceRegular,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    //NOTE: Save Button
+                    Column(
+                      children: [
+                        CustomButton(
+                          width: double.infinity,
+                          height: 48.w,
+                          text: 'Save',
+                          onTap: () {},
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
