@@ -2,6 +2,7 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:neo_nft/controllers/filter_controller.dart';
 import 'package:neo_nft/controllers/item_details_controller.dart';
 import 'package:neo_nft/controllers/user_profile_controller.dart';
 import 'package:neo_nft/theme.dart';
@@ -908,7 +909,118 @@ class FavouriteDiscovery extends StatelessWidget {
                                       'assets/icons/icon_setting.png'),
                                 ),
                               ),
-                              onTap: () {},
+                              onTap: () {
+                                Get.bottomSheet(
+                                  barrierColor: Colors.transparent,
+                                  elevation: 0,
+                                  ListView(
+                                    physics: const BouncingScrollPhysics(),
+                                    children: [
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          BlurryContainer(
+                                            blur: 3,
+                                            elevation: 0,
+                                            color: blurryBGColor,
+                                            padding: const EdgeInsets.all(0),
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(24.r),
+                                              topRight: Radius.circular(24.r),
+                                            ),
+                                            child: Container(
+                                              width: deviceWidth,
+                                              height: 447.w,
+                                              padding: EdgeInsets.only(
+                                                top: 8.w,
+                                                left: 24.w,
+                                                right: 24.w,
+                                                bottom: 32.w,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    width: 1,
+                                                    color: whiteColor
+                                                        .withOpacity(0.1)),
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft:
+                                                      Radius.circular(24.r),
+                                                  topRight:
+                                                      Radius.circular(24.r),
+                                                ),
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Container(
+                                                            width: 134.w,
+                                                            height: 5.w,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: whiteColor,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          24.r),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      SizedBox(
+                                                        height:
+                                                            verticalSpaceMedium,
+                                                      ),
+                                                      Text(
+                                                        'Filter',
+                                                        style:
+                                                            clashDisplayBoldTextStyle
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        24.sp),
+                                                      ),
+                                                      SizedBox(
+                                                        height:
+                                                            verticalSpaceRegular,
+                                                      ),
+                                                      SingleFilterButton(
+                                                          id: 0,
+                                                          title: 'Buy Now'),
+                                                      SingleFilterButton(
+                                                          id: 1,
+                                                          title: 'On Auction'),
+                                                      SingleFilterButton(
+                                                          id: 2,
+                                                          title: 'Is Now'),
+                                                      SingleFilterButton(
+                                                          id: 3,
+                                                          title: 'Has Offers'),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -1106,7 +1218,118 @@ class CollectedItems extends StatelessWidget {
                                       'assets/icons/icon_setting.png'),
                                 ),
                               ),
-                              onTap: () {},
+                              onTap: () {
+                                Get.bottomSheet(
+                                  barrierColor: Colors.transparent,
+                                  elevation: 0,
+                                  ListView(
+                                    physics: const BouncingScrollPhysics(),
+                                    children: [
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          BlurryContainer(
+                                            blur: 3,
+                                            elevation: 0,
+                                            color: blurryBGColor,
+                                            padding: const EdgeInsets.all(0),
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(24.r),
+                                              topRight: Radius.circular(24.r),
+                                            ),
+                                            child: Container(
+                                              width: deviceWidth,
+                                              height: 447.w,
+                                              padding: EdgeInsets.only(
+                                                top: 8.w,
+                                                left: 24.w,
+                                                right: 24.w,
+                                                bottom: 32.w,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    width: 1,
+                                                    color: whiteColor
+                                                        .withOpacity(0.1)),
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft:
+                                                      Radius.circular(24.r),
+                                                  topRight:
+                                                      Radius.circular(24.r),
+                                                ),
+                                              ),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Container(
+                                                            width: 134.w,
+                                                            height: 5.w,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: whiteColor,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          24.r),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      SizedBox(
+                                                        height:
+                                                            verticalSpaceMedium,
+                                                      ),
+                                                      Text(
+                                                        'Filter',
+                                                        style:
+                                                            clashDisplayBoldTextStyle
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        24.sp),
+                                                      ),
+                                                      SizedBox(
+                                                        height:
+                                                            verticalSpaceRegular,
+                                                      ),
+                                                      SingleFilterButton(
+                                                          id: 0,
+                                                          title: 'Buy Now'),
+                                                      SingleFilterButton(
+                                                          id: 1,
+                                                          title: 'On Auction'),
+                                                      SingleFilterButton(
+                                                          id: 2,
+                                                          title: 'Is Now'),
+                                                      SingleFilterButton(
+                                                          id: 3,
+                                                          title: 'Has Offers'),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -1664,6 +1887,79 @@ class DetailsExpanded extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+//Button Filter
+final FilterController filterController = Get.put(FilterController());
+
+class SingleFilterButton extends StatefulWidget {
+  SingleFilterButton({
+    Key? key,
+    required this.id,
+    required this.title,
+  }) : super(key: key);
+  int id;
+  String title;
+
+  @override
+  State<SingleFilterButton> createState() => _SingleFilterButtonState();
+}
+
+class _SingleFilterButtonState extends State<SingleFilterButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Obx(
+          () => GestureDetector(
+            onTap: () {
+              filterController.selectedButton.value = widget.id;
+            },
+            child: filterController.selectedButton.value == widget.id
+                ? Container(
+                    width: double.infinity,
+                    height: 56.w,
+                    padding: EdgeInsets.all(16.w),
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      color: whiteColor,
+                    ),
+                    child: Text(
+                      widget.title,
+                      style: semiBoldTextStyle.copyWith(
+                        color: blackColor,
+                      ),
+                    ),
+                  )
+                : Container(
+                    width: double.infinity,
+                    height: 56.w,
+                    padding: EdgeInsets.all(16.w),
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      color: Colors.transparent,
+                      border: Border.all(
+                        width: 1,
+                        color: whiteColor.withOpacity(0.1),
+                      ),
+                    ),
+                    child: Text(
+                      widget.title,
+                      style: semiBoldTextStyle.copyWith(
+                        color: whiteColor,
+                      ),
+                    ),
+                  ),
+          ),
+        ),
+        SizedBox(
+          height: verticalSpaceMedium,
+        ),
+      ],
     );
   }
 }
