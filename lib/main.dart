@@ -29,6 +29,7 @@ import 'package:neo_nft/pages/market_explorer/collection_collectibles_page.dart'
 import 'package:neo_nft/pages/market_explorer/market_explorer.dart';
 import 'package:neo_nft/pages/support_faq/faq_page.dart';
 import 'package:neo_nft/pages/support_faq/support_page.dart';
+import 'package:neo_nft/pages/terms_conditions/terms_condition_page.dart';
 import 'package:neo_nft/pages/token_minting/mint_category_page.dart';
 import 'package:neo_nft/pages/token_minting/mint_collection_details_page.dart';
 import 'package:neo_nft/pages/token_minting/mint_collection_page.dart';
@@ -432,6 +433,16 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/faqPage',
             page: () => const FaqPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+
+          //NOTE: Terms & Conditions
+          GetPage(
+            name: '/termsConditionsPage',
+            page: () => const TermsConditionsPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,

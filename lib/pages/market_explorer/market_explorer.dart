@@ -118,6 +118,12 @@ class _MarketExplorerState extends State<MarketExplorer> {
                           Get.toNamed('/faqPage');
                         },
                       ),
+                      ElevatedButton(
+                        child: const Text('Terms'),
+                        onPressed: () {
+                          Get.toNamed('/termsConditionsPage');
+                        },
+                      ),
                     ],
                   ),
                 ],
