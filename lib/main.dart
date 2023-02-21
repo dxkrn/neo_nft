@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:neo_nft/pages/augmented_reality/about_ar_page.dart';
 import 'package:neo_nft/pages/collection/collection_details_item_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_no_collection_page.dart';
 import 'package:neo_nft/pages/item_detail/item_detail_page.dart';
@@ -401,6 +402,16 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: '/mintCollectionSuccessPage',
             page: () => const MintCollectionSuccessPage(),
+            transition: Transition.fade,
+            transitionDuration: const Duration(
+              milliseconds: 500,
+            ),
+          ),
+
+          //NOTE: Augmented Reality
+          GetPage(
+            name: '/aboutARPage',
+            page: () => const AboutARPage(),
             transition: Transition.fade,
             transitionDuration: const Duration(
               milliseconds: 500,

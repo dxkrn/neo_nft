@@ -96,6 +96,12 @@ class _MarketExplorerState extends State<MarketExplorer> {
                           Get.toNamed('/mintCategoryPage');
                         },
                       ),
+                      ElevatedButton(
+                        child: const Text('AboutAR'),
+                        onPressed: () {
+                          Get.toNamed('/aboutARPage');
+                        },
+                      ),
                     ],
                   ),
                 ],
