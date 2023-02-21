@@ -104,6 +104,22 @@ class _MarketExplorerState extends State<MarketExplorer> {
                       ),
                     ],
                   ),
+                  Row(
+                    children: [
+                      ElevatedButton(
+                        child: const Text('Support'),
+                        onPressed: () {
+                          Get.toNamed('/supportPage');
+                        },
+                      ),
+                      ElevatedButton(
+                        child: const Text('FAQ'),
+                        onPressed: () {
+                          Get.toNamed('/faqPage');
+                        },
+                      ),
+                    ],
+                  ),
                 ],
               ),
               SizedBox(
