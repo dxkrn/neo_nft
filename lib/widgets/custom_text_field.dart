@@ -9,31 +9,41 @@ class CustomTextField extends StatelessWidget {
     required this.hint,
     this.hidePass = false,
     this.withIcon = false,
+    this.withTitle = true,
     this.isNumber = false,
     this.width = 0,
     this.maxLength = 999999,
+    this.maxLines = 1,
+    this.imgSrc = 'assets/icons/icon_eye.png',
   }) : super(key: key);
 
-  final String title, hint;
-  final bool hidePass, withIcon, isNumber;
+  final String title, hint, imgSrc;
+  final bool hidePass, withIcon, withTitle, isNumber;
   final double width;
-  final int maxLength;
+  final int maxLength, maxLines;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: clashDisplayBoldTextStyle,
-        ),
-        SizedBox(
-          height: 8.h,
-        ),
+        withTitle
+            ? Column(
+                children: [
+                  Text(
+                    title,
+                    style: clashDisplayBoldTextStyle,
+                  ),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                ],
+              )
+            : Container(),
         Container(
           width: width == 0 ? deviceWidth : width,
-          height: 48.w,
+          height: maxLines == 1 ? 48.w : (maxLines - 2) * 48.w,
+          alignment: Alignment.center,
           padding: EdgeInsets.symmetric(
             horizontal: 16.w,
           ),
@@ -54,7 +64,7 @@ class CustomTextField extends StatelessWidget {
             keyboardType: isNumber ? TextInputType.number : TextInputType.text,
             // maxLength: 9999,
             // maxLengthEnforcement: MaxLengthEnforcement.enforced,
-            maxLines: 1,
+            maxLines: maxLines,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintStyle: regularTextStyle.copyWith(
@@ -69,8 +79,8 @@ class CustomTextField extends StatelessWidget {
                           child: SizedBox(
                             width: 24.w,
                             height: 24.w,
-                            child: const Image(
-                              image: AssetImage('assets/icons/icon_eye.png'),
+                            child: Image(
+                              image: AssetImage(imgSrc),
                             ),
                           ),
                           onTap: () {},

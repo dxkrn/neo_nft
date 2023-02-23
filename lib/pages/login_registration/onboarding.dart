@@ -38,9 +38,10 @@ class Onboarding extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                        height: 110.h,
+                        height: 70.w,
                       ),
                       SizedBox(
+
                         width: 327.w,
                         child: Text(
                           'The New World\nis Here',

@@ -156,20 +156,32 @@ class _SigninWithEmailPageState extends State<SigninWithEmailPage> {
                             SizedBox(
                               height: 230.h,
                             ),
-                            CustomButton(
-                              width: deviceWidth - 48.w,
-                              height: 48.w,
-                              text: 'Sign In',
-                              onTap: () {
-                                Get.toNamed('');
-                              },
-                            ),
+                            // CustomButton(
+                            //   width: deviceWidth - 48.w,
+                            //   height: 48.w,
+                            //   text: 'Sign In',
+                            //   onTap: () {
+                            //     Get.toNamed('');
+                            //   },
+                            // ),
                           ],
                         ),
                       ],
                     ),
                   ],
                 ),
+              ),
+            ),
+            Positioned(
+              bottom: 16.w,
+              left: 24.w,
+              child: CustomButton(
+                width: deviceWidth - 48.w,
+                height: 48.w,
+                text: 'Sign In',
+                onTap: () {
+                  Get.toNamed('');
+                },
               ),
             ),
           ],
