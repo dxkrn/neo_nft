@@ -729,7 +729,11 @@ class _ItemDetailPurchasementSuccessPage
                               width: double.infinity,
                               height: 48.w,
                               text: 'Done',
-                              onTap: () {},
+                              onTap: () {
+                                Get.back();
+                                Get.back();
+                                Get.back();
+                              },
                             ),
                           ],
                         ),

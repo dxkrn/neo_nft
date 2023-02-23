@@ -23,15 +23,32 @@ class MarketExplorer extends StatefulWidget {
 
 class _MarketExplorerState extends State<MarketExplorer> {
   int _current = 0;
+
+  int _currentTab = 0;
+
   final CarouselController _controller = CarouselController();
+
+  final menu = [
+    Image.asset(
+      'assets/icons/icon_home.png',
+    ),
+    Image.asset(
+      'assets/icons/icon_any.png',
+    ),
+    Image.asset(
+      'assets/icons/icon_user.png',
+    ),
+    Image.asset(
+      'assets/icons/icon_more-horizontal.png',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScaffoldBody(
         child: Center(
-          child: ListView(
-            physics: const BouncingScrollPhysics(),
+          child: Stack(
             children: [
               SizedBox(
                 height: verticalSpaceMedium,
@@ -199,280 +216,429 @@ class _MarketExplorerState extends State<MarketExplorer> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const GroupTitle(title: 'Discovery'),
+                  SizedBox(
+                    height: verticalSpaceMedium,
+                  ),
                   Container(
-                    height: 18.w,
-                    margin: EdgeInsets.only(
-                      right: horizontalSpace,
-                      bottom: verticalSpaceMedium,
-                    ),
+                    height: 48.h,
+                    margin: EdgeInsets.symmetric(horizontal: horizontalSpace),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GestureDetector(
-                          child: SizedBox(
-                            width: 16.w,
-                            height: 16.w,
-                            child: const Image(
-                              image: AssetImage('assets/icons/icon_search.png'),
-                            ),
-                          ),
-                          onTap: () {},
-                        ),
                         SizedBox(
-                          width: 16.w,
+                          width: 108.h,
+                          height: 48.h,
+                          child: const Image(
+                            image:
+                                AssetImage('assets/images/img_logo_small.png'),
+                          ),
                         ),
-                        GestureDetector(
-                          child: SizedBox(
-                            width: 16.w,
-                            height: 16.w,
+                        IconButton(
+                          onPressed: () {
+                            print('Notif: tapped');
+                          },
+                          icon: SizedBox(
+                            width: 24.h,
+                            height: 24.h,
                             child: const Image(
-                              image:
-                                  AssetImage('assets/icons/icon_setting.png'),
+                              image: AssetImage('assets/icons/icon_bell.png'),
                             ),
                           ),
-                          onTap: () {},
                         ),
-                        // Text(
-                        //   'Search',
-                        //   style: regularTextStyle.copyWith(
-                        //     color: whiteColor.withOpacity(0.5),
-                        //     fontSize: 12.sp,
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
-                ],
-              ),
-              SizedBox(
-                width: deviceWidth,
-                height: 104.h,
-                // color: blueColor,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    SizedBox(
-                      width: horizontalSpace,
-                    ),
-                    const DiscoverCard(
-                      title: 'Art',
-                      pageUrl: '/collectionArtPage',
-                    ),
-                    const DiscoverCard(
-                      title: 'Collectibles',
-                      pageUrl: '/collectionCollectiblesPage',
-                    ),
-                    const DiscoverCard(
-                      title: 'Bids',
-                      pageUrl: '/collectionBidsPage',
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: verticalSpaceRegular,
-              ),
+                  SizedBox(
+                    height: verticalSpaceRegular,
+                  ),
+                  const GroupTitle(title: 'Featured'),
 
-              //NOTE : Popular
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const GroupTitle(title: 'Popular'),
-                  Container(
-                    height: 18.w,
-                    margin: EdgeInsets.only(
-                      right: horizontalSpace,
-                      bottom: verticalSpaceMedium,
+                  //NOTE : Featured
+                  // CarouselSlider(
+                  //   items: featuredList,
+                  //   carouselController: _controller,
+                  //   options: CarouselOptions(
+                  //     autoPlay: true,
+                  //     // enlargeCenterPage: true,
+                  //     // aspectRatio: 2.0,
+                  //     onPageChanged: (index, reason) {
+                  //       setState(() {
+                  //         _current = index;
+                  //       });
+                  //     },
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 8.h,
+                  // ),
+
+                  //NOTE: Carousel V2
+                  SizedBox(
+                    // color: cyanColor,
+                    width: double.infinity,
+                    height: 174.w,
+                    child: PageView(
+                      physics: const BouncingScrollPhysics(),
+                      children: featuredList,
+                      onPageChanged: (index) {
+                        setState(() {
+                          _current = index;
+                        });
+                      },
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  ),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+
+                  //NOTE : Featured Indicator
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: featuredList.asMap().entries.map((entry) {
+                      return GestureDetector(
+                        onTap: () => _controller.animateToPage(entry.key),
+                        child: Container(
+                          width: 12.0,
+                          height: 12.0,
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 4.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color:
+                                _current == entry.key ? cyanColor : whiteColor,
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+
+                  SizedBox(
+                    height: verticalSpaceRegular,
+                  ),
+
+                  //NOTE : Discovery
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const GroupTitle(title: 'Discovery'),
+                      Container(
+                        height: 18.w,
+                        margin: EdgeInsets.only(
+                          right: horizontalSpace,
+                          bottom: verticalSpaceMedium,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              child: SizedBox(
+                                width: 16.w,
+                                height: 16.w,
+                                child: const Image(
+                                  image: AssetImage(
+                                      'assets/icons/icon_search.png'),
+                                ),
+                              ),
+                              onTap: () {},
+                            ),
+                            SizedBox(
+                              width: 16.w,
+                            ),
+                            GestureDetector(
+                              child: SizedBox(
+                                width: 16.w,
+                                height: 16.w,
+                                child: const Image(
+                                  image: AssetImage(
+                                      'assets/icons/icon_setting.png'),
+                                ),
+                              ),
+                              onTap: () {},
+                            ),
+                            // Text(
+                            //   'Search',
+                            //   style: regularTextStyle.copyWith(
+                            //     color: whiteColor.withOpacity(0.5),
+                            //     fontSize: 12.sp,
+                            //   ),
+                            // ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: deviceWidth,
+                    height: 104.h,
+                    // color: blueColor,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
                       children: [
-                        GestureDetector(
-                          child: Text(
-                            'View more',
-                            style: regularTextStyle.copyWith(
-                              color: whiteColor.withOpacity(0.5),
-                              fontSize: 12.sp,
-                            ),
-                          ),
-                          onTap: () {},
+                        SizedBox(
+                          width: horizontalSpace,
+                        ),
+                        const DiscoverCard(
+                          title: 'Art',
+                          pageUrl: '/collectionArtPage',
+                        ),
+                        const DiscoverCard(
+                          title: 'Collectibles',
+                          pageUrl: '/collectionCollectiblesPage',
+                        ),
+                        const DiscoverCard(
+                          title: 'Bids',
+                          pageUrl: '/collectionBidsPage',
                         ),
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: verticalSpaceRegular,
+                  ),
+
+                  //NOTE : Popular
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const GroupTitle(title: 'Popular'),
+                      Container(
+                        height: 18.w,
+                        margin: EdgeInsets.only(
+                          right: horizontalSpace,
+                          bottom: verticalSpaceMedium,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              child: Text(
+                                'View more',
+                                style: regularTextStyle.copyWith(
+                                  color: whiteColor.withOpacity(0.5),
+                                  fontSize: 12.sp,
+                                ),
+                              ),
+                              onTap: () {},
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 200.h,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
+                      children: [
+                        SizedBox(
+                          width: horizontalSpace,
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: verticalSpaceRegular,
+                  ),
+
+                  //NOTE : Top Seller
+                  const GroupTitle(title: 'Top Seller'),
+                  SizedBox(
+                    width: deviceWidth,
+                    height: 144.h,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
+                      children: [
+                        SizedBox(
+                          width: horizontalSpace,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            TopSellerCard(
+                              title: 'AZUKI',
+                              percent: 556.49,
+                            ),
+                            TopSellerCard(
+                              title: 'Nyolings',
+                              percent: 428.13,
+                            ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            TopSellerCard(
+                              title: 'Meta-morphic fdsf dsf',
+                              percent: 556.49,
+                            ),
+                            TopSellerCard(
+                              title: 'Lumen',
+                              percent: 428.13,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: verticalSpaceRegular,
+                  ),
+
+                  //NOTE : Trending
+                  const GroupTitle(title: 'Trending'),
+                  SizedBox(
+                    height: 200.h,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
+                      children: [
+                        SizedBox(
+                          width: horizontalSpace,
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: verticalSpaceRegular,
+                  ),
+
+                  //NOTE : New
+                  const GroupTitle(title: 'New'),
+                  SizedBox(
+                    height: 200.h,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
+                      children: [
+                        SizedBox(
+                          width: horizontalSpace,
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                        const CommonCard(
+                          title: 'Neo Cube#812',
+                          price: '6000',
+                          favCount: 12,
+                          pageName: '/itemDetail',
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: 50.h,
+                  ),
                 ],
               ),
-              SizedBox(
-                height: 200.h,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    SizedBox(
-                      width: horizontalSpace,
+              Positioned(
+                  // center the widget
+                  left: 0,
+                  right: 0,
+                  bottom: 20.0,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 24,
+                      right: 24,
                     ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: verticalSpaceRegular,
-              ),
+                    child: BlurryContainer(
+                      blur: 1,
+                      height: 65.h,
+                      elevation: 0,
+                      color: blackColor.withOpacity(0.3),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(64.r),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: menu.map((e) {
+                          final int index = menu.indexOf(e);
 
-              //NOTE : Top Seller
-              const GroupTitle(title: 'Top Seller'),
-              SizedBox(
-                width: deviceWidth,
-                height: 144.h,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    SizedBox(
-                      width: horizontalSpace,
+                          return CircleAvatar(
+                            backgroundColor: _currentTab == index
+                                ? purpleColor
+                                : Colors.transparent,
+                            child: IconButton(
+                              icon: e,
+                              tooltip: 'Menu',
+                              color: Colors.white,
+                              onPressed: () {
+                                setState(() {
+                                  _currentTab = index;
+                                });
+                              },
+                            ),
+                          );
+                        }).toList(),
+                      ),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        TopSellerCard(
-                          title: 'AZUKI',
-                          percent: 556.49,
-                        ),
-                        TopSellerCard(
-                          title: 'Nyolings',
-                          percent: 428.13,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        TopSellerCard(
-                          title: 'Meta-morphic fdsf dsf',
-                          percent: 556.49,
-                        ),
-                        TopSellerCard(
-                          title: 'Lumen',
-                          percent: 428.13,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: verticalSpaceRegular,
-              ),
-
-              //NOTE : Trending
-              const GroupTitle(title: 'Trending'),
-              SizedBox(
-                height: 200.h,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    SizedBox(
-                      width: horizontalSpace,
-                    ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: verticalSpaceRegular,
-              ),
-
-              //NOTE : New
-              const GroupTitle(title: 'New'),
-              SizedBox(
-                height: 200.h,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    SizedBox(
-                      width: horizontalSpace,
-                    ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                    const CommonCard(
-                      title: 'Neo Cube#812',
-                      price: '6000',
-                      favCount: 12,
-                      pageName: '/itemDetail',
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(
-                height: 50.h,
-              ),
+                  )),
             ],
           ),
         ),

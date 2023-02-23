@@ -78,13 +78,13 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                               },
                             ),
 
-                            //NOTE: Button Sementara
-                            ElevatedButton(
-                              onPressed: () {
-                                Get.toNamed('/itemDetailPromotePage');
-                              },
-                              child: const Text('Promote'),
-                            ),
+                            // //NOTE: Button Sementara
+                            // ElevatedButton(
+                            //   onPressed: () {
+                            //     Get.toNamed('/itemDetailPromotePage');
+                            //   },
+                            //   child: const Text('Promote'),
+                            // ),
 
                             //NOTE: Button More
                             GestureDetector(
@@ -147,7 +147,10 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                                                 ),
                                                 MoreSingleButton(
                                                   title: 'Promote',
-                                                  onTap: () {},
+                                                  onTap: () {
+                                                    Get.toNamed(
+                                                        '/itemDetailPromotePage');
+                                                  },
                                                 ),
                                               ],
                                             ),

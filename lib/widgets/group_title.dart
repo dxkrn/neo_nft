@@ -6,8 +6,12 @@ class GroupTitle extends StatelessWidget {
   const GroupTitle({
     Key? key,
     required this.title,
+    this.textAlign,
   }) : super(key: key);
+
   final String title;
+
+  final TextAlign? textAlign;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,6 +22,7 @@ class GroupTitle extends StatelessWidget {
       ),
       child: Text(
         title,
+        textAlign: textAlign,
         style: clashDisplayBoldTextStyle.copyWith(
           fontSize: 20.sp,
         ),
