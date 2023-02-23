@@ -43,6 +43,13 @@ class _MarketExplorerState extends State<MarketExplorer> {
     ),
   ];
 
+  final menuRoute = [
+    '/marketExplorer',
+    '/marketExplorer',
+    '/userProfilePage',
+    '/userSettingsPage',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,171 +57,8 @@ class _MarketExplorerState extends State<MarketExplorer> {
         child: Center(
           child: Stack(
             children: [
-              SizedBox(
-                height: verticalSpaceMedium,
-              ),
-              Container(
-                height: 48.h,
-                margin: EdgeInsets.symmetric(horizontal: horizontalSpace),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: 108.h,
-                      height: 48.h,
-                      child: const Image(
-                        image: AssetImage('assets/images/img_logo_small.png'),
-                      ),
-                    ),
-
-                    // IconButton(
-                    //   onPressed: () {
-                    //     print('Notif: tapped');
-                    //   },
-                    //   icon: SizedBox(
-                    //     width: 24.h,
-                    //     height: 24.h,
-                    //     child: const Image(
-                    //       image: AssetImage('assets/icons/icon_bell.png'),
-                    //     ),
-                    //   ),
-                    // ),
-                  ],
-                ),
-              ),
-
-              //NOTE: Tombol Sementara
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      ElevatedButton(
-                        child: const Text('CollectionDetailItem'),
-                        onPressed: () {
-                          Get.toNamed('/collectionDetailItem');
-                        },
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      ElevatedButton(
-                        child: const Text('UserProfile'),
-                        onPressed: () {
-                          Get.toNamed('/userProfilePage');
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      ElevatedButton(
-                        child: const Text('Start Minting'),
-                        onPressed: () {
-                          Get.toNamed('/mintCategoryPage');
-                        },
-                      ),
-                      ElevatedButton(
-                        child: const Text('AboutAR'),
-                        onPressed: () {
-                          Get.toNamed('/aboutARPage');
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      ElevatedButton(
-                        child: const Text('Support'),
-                        onPressed: () {
-                          Get.toNamed('/supportPage');
-                        },
-                      ),
-                      ElevatedButton(
-                        child: const Text('FAQ'),
-                        onPressed: () {
-                          Get.toNamed('/faqPage');
-                        },
-                      ),
-                      ElevatedButton(
-                        child: const Text('Terms'),
-                        onPressed: () {
-                          Get.toNamed('/termsConditionsPage');
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: verticalSpaceRegular,
-              ),
-              const GroupTitle(title: 'Featured'),
-
-              //NOTE : Featured
-              // CarouselSlider(
-              //   items: featuredList,
-              //   carouselController: _controller,
-              //   options: CarouselOptions(
-              //     autoPlay: true,
-              //     // enlargeCenterPage: true,
-              //     // aspectRatio: 2.0,
-              //     onPageChanged: (index, reason) {
-              //       setState(() {
-              //         _current = index;
-              //       });
-              //     },
-              //   ),
-              // ),
-              // SizedBox(
-              //   height: 8.h,
-              // ),
-
-              //NOTE: Carousel V2
-              SizedBox(
-                // color: cyanColor,
-                width: double.infinity,
-                height: 174.w,
-                child: PageView(
-                  physics: const BouncingScrollPhysics(),
-                  children: featuredList,
-                  onPageChanged: (index) {
-                    setState(() {
-                      _current = index;
-                    });
-                  },
-                ),
-              ),
-              SizedBox(
-                height: 8.h,
-              ),
-
-              //NOTE : FEatured Indicator
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: featuredList.asMap().entries.map((entry) {
-                  return GestureDetector(
-                    onTap: () => _controller.animateToPage(entry.key),
-                    child: Container(
-                      width: 12.0,
-                      height: 12.0,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 4.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _current == entry.key ? cyanColor : whiteColor,
-                      ),
-                    ),
-                  );
-                }).toList(),
-              ),
-
-              SizedBox(
-                height: verticalSpaceRegular,
-              ),
-
-              //NOTE : Discovery
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              ListView(
+                physics: const BouncingScrollPhysics(),
                 children: [
                   SizedBox(
                     height: verticalSpaceMedium,
@@ -296,7 +140,9 @@ class _MarketExplorerState extends State<MarketExplorer> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: featuredList.asMap().entries.map((entry) {
                       return GestureDetector(
-                        onTap: () => _controller.animateToPage(entry.key),
+                        onTap: () {
+                          _controller.animateToPage(entry.key);
+                        },
                         child: Container(
                           width: 12.0,
                           height: 12.0,
@@ -470,7 +316,7 @@ class _MarketExplorerState extends State<MarketExplorer> {
                   const GroupTitle(title: 'Top Seller'),
                   SizedBox(
                     width: deviceWidth,
-                    height: 144.h,
+                    height: 164.h,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
@@ -632,6 +478,9 @@ class _MarketExplorerState extends State<MarketExplorer> {
                                 setState(() {
                                   _currentTab = index;
                                 });
+                                Get.toNamed(
+                                  menuRoute[index],
+                                );
                               },
                             ),
                           );

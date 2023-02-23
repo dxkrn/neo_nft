@@ -137,7 +137,10 @@ class _SignupWithEmailPageState extends State<SignupWithEmailPage> {
                                                   TextDecoration.underline,
                                             ),
                                             recognizer: TapGestureRecognizer()
-                                              ..onTap = () {},
+                                              ..onTap = () {
+                                                Get.toNamed(
+                                                    '/termsConditionsPage');
+                                              },
                                           ),
                                           TextSpan(
                                             text:

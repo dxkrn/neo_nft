@@ -36,12 +36,16 @@ class UserSettingsPage extends StatelessWidget {
                     SingleSettingsButton(
                       title: 'FAQ & Support',
                       imgSrc: 'assets/icons/user_settings/icon_faq.png',
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed('/supportPage');
+                      },
                     ),
                     SingleSettingsButton(
                       title: 'Term and Conditions',
                       imgSrc: 'assets/icons/user_settings/icon_term.png',
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed('/termsConditionsPage');
+                      },
                     ),
                     SingleSettingsButton(
                       title: 'Twitter',
